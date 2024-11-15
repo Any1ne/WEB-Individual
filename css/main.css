@@ -1,0 +1,61 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.main-content {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  border: 2px solid #000; /* Бордер для головного контейнера */
+  background-color: rgb(214, 105, 15);
+}
+
+/* Прозорий блок з текстом */
+.transparent-box {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 700px;
+  height: 200px;
+  background-color: rgba(255, 255, 255, 0); /* Прозорий білий фон */
+  z-index: 10;
+  border: 2px solid #000; /* Бордер для візуалізації */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Блок з посиланнями */
+.links-box {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 700px;
+  height: 200px;
+  background-color: #d40e0e; /* Світлий фон для контрасту */
+  z-index: 10;
+  border: 2px solid #000; /* Бордер для візуалізації */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/* Стилі для кожного блоку-посилання */
+.link {
+  width: 120px;
+  height: 100px;
+  background-color: #d40e0e; /* Світло-сірий фон */
+  border: 2px solid #000; /* Бордер для візуалізації */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.link a {
+  text-decoration: none;
+  color: #000;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+}
