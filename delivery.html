@@ -16,51 +16,80 @@
         <section class="main-content">
           <div class="transparent-box">
             <h1>Create Delivery</h1>
+
             <!-- Stepper -->
             <div class="stepper">
-              <label>
-                <input type="radio" name="step" checked />
-                <span>Parcel details</span>
-              </label>
-              <label>
-                <input type="radio" name="step" />
-                <span>Payment details</span>
-              </label>
-              <label>
-                <input type="radio" name="step" />
-                <span>Addresses</span>
-              </label>
-              <label>
-                <input type="radio" name="step" />
-                <span>Verification</span>
-              </label>
+              <div class="step active" data-step="1">Parcel Details</div>
+              <div class="step" data-step="2">Payment Details</div>
+              <div class="step" data-step="3">Addresses</div>
+              <div class="step" data-step="4">Verification</div>
             </div>
 
-            <!-- Form -->
+            <!-- Form Content -->
             <div class="form">
-              <h2>Shipment Type</h2>
-              <div class="shipment-options">
-                <button class="option">Parcel</button>
-                <button class="option">Documents</button>
+              <div class="step-content active" data-step="1">
+                <h2>Parcel Details</h2>
+                <label>
+                  Shipment Type:
+                  <select>
+                    <option>Parcel</option>
+                    <option>Documents</option>
+                  </select>
+                </label>
+                <label>
+                  Parcel Size:
+                  <input type="text" placeholder="Length" />
+                  <input type="text" placeholder="Width" />
+                  <input type="text" placeholder="Height" />
+                </label>
               </div>
 
-              <h2>Parcel Size</h2>
-              <div class="parcel-size">
-                <input type="text" placeholder="Length" />
-                <input type="text" placeholder="Width" />
-                <input type="text" placeholder="Height" />
+              <div class="step-content" data-step="2">
+                <h2>Payment Details</h2>
+                <label>
+                  Card Number:
+                  <input type="text" placeholder="1234 5678 9012 3456" />
+                </label>
+                <label>
+                  Expiry Date:
+                  <input type="text" placeholder="MM/YY" />
+                </label>
+                <label>
+                  CVV:
+                  <input type="text" placeholder="123" />
+                </label>
+              </div>
+
+              <div class="step-content" data-step="3">
+                <h2>Addresses</h2>
+                <label>
+                  Sender Address:
+                  <input type="text" placeholder="Sender Address" />
+                </label>
+                <label>
+                  Receiver Address:
+                  <input type="text" placeholder="Receiver Address" />
+                </label>
+              </div>
+
+              <div class="step-content" data-step="4">
+                <h2>Verification</h2>
+                <p>Please confirm the details and submit the form.</p>
               </div>
             </div>
 
-            <!-- Buttons -->
+            <!-- Navigation Buttons -->
             <div class="buttons">
-              <button class="prev">Previous</button>
-              <button class="next">Next</button>
+              <button id="prev-btn" class="prev" disabled>Previous</button>
+              <button id="next-btn" class="next">Next</button>
             </div>
           </div>
         </section>
       </main>
+
       <footer class="box">Footer</footer>
     </div>
+
+    <script src="./scripts/stepper.js"></script>
   </body>
 </html>
