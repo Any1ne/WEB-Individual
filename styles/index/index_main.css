@@ -1,0 +1,42 @@
+.main-content {
+  background-color: rgb(214, 105, 15);
+}
+
+.transparent-box {
+  background-color: rgba(255, 255, 255, 0);
+  z-index: 10;
+  border: 2px solid #000;
+  display: flex;
+  text-align: left;
+  justify-content: center;
+  align-items: center;
+}
+
+.links-box {
+  background-color: #d40e0e;
+  z-index: 10;
+  border: 2px solid #000;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.link {
+  background-color: rgba(255, 255, 255, 0);
+  border: 2px solid #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.link a {
+  text-decoration: none;
+  color: #000;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.link a:hover {
+  background-color: rgba(0, 0, 0, 0.15);
+}

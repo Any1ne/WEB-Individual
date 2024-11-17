@@ -1,0 +1,66 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Delivery</title>
+    <link rel="stylesheet" href="./styles/base.css" />
+    <link rel="stylesheet" href="./styles/layout.css" />
+    <link rel="stylesheet" href="./styles/delivery/delivery_layout.css" />
+    <link rel="stylesheet" href="./styles/delivery/delivery_main.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="box">Header</header>
+      <nav class="box">Menu</nav>
+      <main class="box main-content">
+        <section class="main-content">
+          <div class="transparent-box">
+            <h1>Create Delivery</h1>
+            <!-- Stepper -->
+            <div class="stepper">
+              <label>
+                <input type="radio" name="step" checked />
+                <span>Parcel details</span>
+              </label>
+              <label>
+                <input type="radio" name="step" />
+                <span>Payment details</span>
+              </label>
+              <label>
+                <input type="radio" name="step" />
+                <span>Addresses</span>
+              </label>
+              <label>
+                <input type="radio" name="step" />
+                <span>Verification</span>
+              </label>
+            </div>
+
+            <!-- Form -->
+            <div class="form">
+              <h2>Shipment Type</h2>
+              <div class="shipment-options">
+                <button class="option">Parcel</button>
+                <button class="option">Documents</button>
+              </div>
+
+              <h2>Parcel Size</h2>
+              <div class="parcel-size">
+                <input type="text" placeholder="Length" />
+                <input type="text" placeholder="Width" />
+                <input type="text" placeholder="Height" />
+              </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="buttons">
+              <button class="prev">Previous</button>
+              <button class="next">Next</button>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="box">Footer</footer>
+    </div>
+  </body>
+</html>
