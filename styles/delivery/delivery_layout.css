@@ -5,7 +5,42 @@
 }
 
 .transparent-box {
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
   position: absolute;
   width: 80%;
   height: 90%;
+  padding: 20px;
+  text-align: left;
+  justify-content: space-between;
+}
+
+.step {
+  padding: 10px;
+}
+
+.step-content {
+  display: none;
+}
+
+.step-content.active {
+  display: block;
+}
+
+.stepper label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+button {
+  padding: 10px 20px;
 }
