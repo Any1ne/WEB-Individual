@@ -75,13 +75,16 @@
                 <h2>Addresses</h2>
                 <label>
                   Sender Address:
-                  <input type="text" placeholder="Sender Address" />
+                  <input id="sender-address" type="text" placeholder="Sender Address" />
                 </label>
                 <label>
                   Receiver Address:
-                  <input type="text" placeholder="Receiver Address" />
+                  <input id="receiver-address" type="text" placeholder="Receiver Address" />
                 </label>
-              </div>
+                <div id="map" style="width: 100%; height: 400px; margin-top: 20px;"></div>
+                <button id="calculate-distance">Calculate Distance</button>
+                <p id="distance-result"></p>
+              </div>              
 
               <div class="step-content" data-step="4">
                 <h2>Verification</h2>
