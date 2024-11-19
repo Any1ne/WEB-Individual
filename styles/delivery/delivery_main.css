@@ -54,6 +54,10 @@ h1 {
   margin: 10px 0;
 }
 
+#map {
+  border: 2px solid #000;
+}
+
 .option {
   width: 48%;
   padding: 10px;
