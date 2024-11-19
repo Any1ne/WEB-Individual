@@ -21,8 +21,8 @@
             <!-- Stepper -->
             <div class="stepper">
               <div class="step active" data-step="1">Parcel Details</div>
-              <div class="step" data-step="2">Payment Details</div>
-              <div class="step" data-step="3">Addresses</div>
+              <div class="step" data-step="2">Addresses</div>
+              <div class="step" data-step="3">Payment Details</div>
               <div class="step" data-step="4">Verification</div>
             </div>
 
@@ -50,6 +50,21 @@
               </div>
 
               <div class="step-content" data-step="2">
+                <h2>Addresses</h2>
+                <label>
+                  Sender Address:
+                  <input id="sender-address" type="text" placeholder="Sender Address" />
+                </label>
+                <label>
+                  Receiver Address:
+                  <input id="receiver-address" type="text" placeholder="Receiver Address" />
+                </label>
+                <div id="map" style="width: 100%; height: 400px; margin-top: 20px;"></div>
+                <button id="calculate-distance">Calculate Distance</button>
+                <p id="distance-result"></p>
+              </div>         
+
+              <div class="step-content" data-step="3">
                 <h2>Payment Details</h2>
                 <div class = "label">
                 <label>
@@ -71,21 +86,6 @@
               </div>
               </div>
 
-              <div class="step-content" data-step="3">
-                <h2>Addresses</h2>
-                <label>
-                  Sender Address:
-                  <input id="sender-address" type="text" placeholder="Sender Address" />
-                </label>
-                <label>
-                  Receiver Address:
-                  <input id="receiver-address" type="text" placeholder="Receiver Address" />
-                </label>
-                <div id="map" style="width: 100%; height: 400px; margin-top: 20px;"></div>
-                <button id="calculate-distance">Calculate Distance</button>
-                <p id="distance-result"></p>
-              </div>              
-
               <div class="step-content" data-step="4">
                 <h2>Verification</h2>
                 <p>Please confirm the details and submit the form.</p>
@@ -96,6 +96,7 @@
             <div class="buttons">
               <button id="prev-btn" class="prev" disabled>Previous</button>
               <button id="next-btn" class="next">Next</button>
+              <button id="submit-btn" class="submit" style="display: none;">Submit</button>
             </div>
           </div>
         </section>
@@ -104,6 +105,8 @@
       <footer class="box footer">Footer</footer>
     </div>
 
+    <!-- Scripts -->
     <script src="./scripts/stepper.js"></script>
+    <script type="module" src="./scripts/script.js"></script>
   </body>
 </html>

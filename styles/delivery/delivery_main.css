@@ -59,6 +59,10 @@ h1 {
   margin: 10px 0;
 }
 
+#map{
+  border: 2px solid #000;
+}
+
 .option {
   width: 48%;
   padding: 10px;
@@ -99,4 +103,13 @@ button:hover {
 button:disabled {
   background-color: #e0e0e0;
   cursor: not-allowed;
+}
+
+input.invalid {
+  border-color: red;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.9em;
 }
