@@ -11,7 +11,7 @@
     <script type="module" src="https://unpkg.com/@googlemaps/extended-component-library@0.6"></script>
   </head>
   <body>
-    <gmpx-api-loader key="AIzaSyD2tP18JfKszd9dG5HnW6_UGMobV1Fmux8" solution-channel="GMP_GE_mapsandplacesautocomplete_v1"></gmpx-api-loader>
+    <!-- <gmpx-api-loader key="AIzaSyD2tP18JfKszd9dG5HnW6_UGMobV1Fmux8" solution-channel="GMP_GE_mapsandplacesautocomplete_v1"></gmpx-api-loader> -->
     <div class="container">
       <header class="box">Header</header>
       <nav class="box">Menu</nav>
@@ -50,7 +50,6 @@
                 </label>
               </div>
               </div>
-
               
               <div class="step-content" data-step="2">
                 <h2>Addresses</h2>
@@ -99,6 +98,7 @@
             <div class="buttons">
               <button id="prev-btn" class="prev" disabled>Previous</button>
               <button id="next-btn" class="next">Next</button>
+              <button id="submit-btn" class="submit" style="display: none;">Submit</button>
             </div>
           </div>
         </section>
@@ -107,7 +107,8 @@
       <footer class="box footer">Footer</footer>
     </div>
 
-    <script src="./scripts/stepper.js"></script>
+    <script type= "module" src="./scripts/stepper.js"></script>
     <script src="./scripts/map.js"></script>
+    <script type= "module" src="./scripts/script.js"></script>
   </body>
 </html>
