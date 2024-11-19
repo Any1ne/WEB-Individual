@@ -8,8 +8,10 @@
     <link rel="stylesheet" href="./styles/footer.css" />
     <link rel="stylesheet" href="./styles/delivery/delivery_layout.css" />
     <link rel="stylesheet" href="./styles/delivery/delivery_main.css" />
+    <script type="module" src="https://unpkg.com/@googlemaps/extended-component-library@0.6"></script>
   </head>
   <body>
+    <gmpx-api-loader key="AIzaSyD2tP18JfKszd9dG5HnW6_UGMobV1Fmux8" solution-channel="GMP_GE_mapsandplacesautocomplete_v1"></gmpx-api-loader>
     <div class="container">
       <header class="box">Header</header>
       <nav class="box">Menu</nav>
@@ -21,8 +23,8 @@
             <!-- Stepper -->
             <div class="stepper">
               <div class="step active" data-step="1">Parcel Details</div>
-              <div class="step" data-step="2">Payment Details</div>
-              <div class="step" data-step="3">Addresses</div>
+              <div class="step" data-step="2">Addresses</div>
+              <div class="step" data-step="3">Payment Details</div>
               <div class="step" data-step="4">Verification</div>
             </div>
 
@@ -49,7 +51,23 @@
               </div>
               </div>
 
+              
               <div class="step-content" data-step="2">
+                <h2>Addresses</h2>
+                <label>
+                  Sender Address:
+                  <input id="sender-address" type="text" placeholder="Sender Address" />
+                </label>
+                <label>
+                  Receiver Address:
+                  <input id="receiver-address" type="text" placeholder="Receiver Address" />
+                </label>
+                <div id="map"></div>
+                <button id="calculate-distance">Calculate Distance</button>
+                <p id="distance-result"></p>
+              </div>              
+
+              <div class="step-content" data-step="3">
                 <h2>Payment Details</h2>
                 <div class = "label">
                 <label>
@@ -71,21 +89,6 @@
               </div>
               </div>
 
-              <div class="step-content" data-step="3">
-                <h2>Addresses</h2>
-                <label>
-                  Sender Address:
-                  <input id="sender-address" type="text" placeholder="Sender Address" />
-                </label>
-                <label>
-                  Receiver Address:
-                  <input id="receiver-address" type="text" placeholder="Receiver Address" />
-                </label>
-                <div id="map" style="width: 100%; height: 400px; margin-top: 20px;"></div>
-                <button id="calculate-distance">Calculate Distance</button>
-                <p id="distance-result"></p>
-              </div>              
-
               <div class="step-content" data-step="4">
                 <h2>Verification</h2>
                 <p>Please confirm the details and submit the form.</p>
@@ -105,5 +108,6 @@
     </div>
 
     <script src="./scripts/stepper.js"></script>
+    <script src="./scripts/map.js"></script>
   </body>
 </html>

@@ -14,7 +14,9 @@ function initMap() {
   const receiverInput = document.getElementById("receiver-address");
 
   const senderAutocomplete = new google.maps.places.Autocomplete(senderInput);
-  const receiverAutocomplete = new google.maps.places.Autocomplete(receiverInput);
+  const receiverAutocomplete = new google.maps.places.Autocomplete(
+    receiverInput
+  );
 
   senderAutocomplete.bindTo("bounds", map);
   receiverAutocomplete.bindTo("bounds", map);
@@ -52,9 +54,11 @@ function initMap() {
   });
 
   // Кнопка для обчислення дистанції
-  document.getElementById("calculate-distance").addEventListener("click", () => {
-    calculateDistance();
-  });
+  document
+    .getElementById("calculate-distance")
+    .addEventListener("click", () => {
+      calculateDistance();
+    });
 }
 
 // Функція для обчислення фізичної дистанції (Haversine Formula)
@@ -72,7 +76,9 @@ function calculateDistance() {
     { lat: receiverPosition.lat(), lng: receiverPosition.lng() }
   );
 
-  document.getElementById("distance-result").textContent = `Distance: ${distance.toFixed(2)} meters`;
+  document.getElementById(
+    "distance-result"
+  ).textContent = `Distance: ${distance.toFixed(2)} meters`;
 }
 
 // Формула Haversine
@@ -85,7 +91,10 @@ function haversineDistance(coord1, coord2) {
 
   const a =
     Math.sin(deltaLat / 2) * Math.sin(deltaLat / 2) +
-    Math.cos(lat1) * Math.cos(lat2) * Math.sin(deltaLng / 2) * Math.sin(deltaLng / 2);
+    Math.cos(lat1) *
+      Math.cos(lat2) *
+      Math.sin(deltaLng / 2) *
+      Math.sin(deltaLng / 2);
 
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   return R * c; // Відстань у метрах
