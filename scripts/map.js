@@ -61,7 +61,6 @@ function initMap() {
     });
 }
 
-// Функція для обчислення фізичної дистанції (Haversine Formula)
 function calculateDistance() {
   if (!senderMarker || !receiverMarker) {
     alert("Please select both sender and receiver addresses.");
@@ -81,7 +80,6 @@ function calculateDistance() {
   ).textContent = `Distance: ${distance.toFixed(2)} meters`;
 }
 
-// Формула Haversine
 function haversineDistance(coord1, coord2) {
   const R = 6371000; // Радіус Землі в метрах
   const lat1 = (coord1.lat * Math.PI) / 180;
@@ -100,5 +98,4 @@ function haversineDistance(coord1, coord2) {
   return R * c; // Відстань у метрах
 }
 
-// Завантаження карти
 window.initMap = initMap;

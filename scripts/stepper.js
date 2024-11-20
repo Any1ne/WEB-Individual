@@ -56,7 +56,6 @@ function displayConfirmation() {
       ".step-content[data-step='4']"
     );
 
-    // Заповнення значень у відповідні елементи
     document.getElementById("parcel-type").textContent = delivery.parcel.type;
     document.getElementById(
       "parcel-size"
