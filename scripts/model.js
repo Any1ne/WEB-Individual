@@ -41,7 +41,7 @@ export class Delivery {
   }
 
   calculatePrice() {
-    const distance = this.calculateDistance(); // Distance in kilometers
+    const distance = this.calculateDistance();
     const sizeVolume =
       this.parcel.size.length *
       this.parcel.size.width *
