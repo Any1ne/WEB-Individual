@@ -1,4 +1,5 @@
-// import { Validator } from "./validation.js";
+import { Validator } from "./validation.js";
+import { createDelivery, saveDelivery } from "./script.js";
 
 const steps = document.querySelectorAll(".step");
 const stepContents = document.querySelectorAll(".step-content");
@@ -7,7 +8,6 @@ const nextBtn = document.getElementById("next-btn");
 const submitBtn = document.getElementById("submit-btn");
 let currentStep = 1;
 
-// Update Stepper and Content Visibility
 function updateStep() {
   steps.forEach((step, index) => {
     step.classList.toggle("active", index + 1 === currentStep);
@@ -17,35 +17,34 @@ function updateStep() {
     content.classList.toggle("active", index + 1 === currentStep);
   });
 
-  // Disable/Enable Buttons
   prevBtn.disabled = currentStep === 1;
-  nextBtn.style.display = currentStep === steps.length ? "none" : "inline-block"; // Hide "Next" on last step
-  submitBtn.style.display = currentStep === steps.length ? "inline-block" : "none"; // Show "Submit" on last step
+  nextBtn.style.display =
+    currentStep === steps.length ? "none" : "inline-block";
+  submitBtn.style.display =
+    currentStep === steps.length ? "inline-block" : "none";
+
+  if (currentStep === steps.length) {
+    displayConfirmation();
+  }
 }
 
-// Validate Input for Current Step
 function isStepValid() {
-  const currentStepContent = stepContents[currentStep - 1];
-  const inputs = currentStepContent.querySelectorAll("input, textarea, select");
+  const inputs =
+    stepContents[currentStep - 1].querySelectorAll("input, select");
   let isValid = true;
 
   inputs.forEach((input) => {
-    if (!input.checkValidity()) {
-      isValid = false;
-      input.classList.add("invalid");
-      const errorMessage = input.nextElementSibling;
-      if (errorMessage && errorMessage.classList.contains("error-message")) {
-        errorMessage.textContent = input.validationMessage;
-      }
-    } else {
-      input.classList.remove("invalid");
-      const errorMessage = input.nextElementSibling;
-      if (errorMessage && errorMessage.classList.contains("error-message")) {
-        errorMessage.textContent = "";
+    const validationFn = input.dataset.validate;
+    if (validationFn && typeof Validator[validationFn] === "function") {
+      const value = input.value;
+      if (!Validator[validationFn](value)) {
+        isValid = false;
+        input.classList.add("error");
+      } else {
+        input.classList.remove("error");
       }
     }
   });
-
   return isValid;
 }
 
@@ -92,15 +91,6 @@ nextBtn.addEventListener("click", () => {
   }
 });
 
-// Handle Submit Button Click (Final Step)
-submitBtn.addEventListener("click", () => {
-  if (isStepValid()) {
-    alert("Form submitted!");
-    // You can add the form submission logic here
-  }
-});
-
-// Handle Previous Button Click
 prevBtn.addEventListener("click", () => {
   if (currentStep > 1) {
     currentStep--;
@@ -108,5 +98,12 @@ prevBtn.addEventListener("click", () => {
   }
 });
 
-// Initialize
+submitBtn.addEventListener("click", () => {
+  const delivery = createDelivery();
+  if (delivery) {
+    saveDelivery(delivery);
+    alert("Delivery saved successfully!");
+  }
+});
+
 updateStep();
