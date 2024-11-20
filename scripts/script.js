@@ -1,12 +1,9 @@
-import { Delivery, Parcel } from "./model.js";
+import { Parcel, Delivery } from "./model.js";
 import { Validator } from "./validation.js";
 
 console.log("script.js is loaded");
 
-const deliveries = [];
-
 function showError(input, message) {
-  console.log("showError call");
   const errorSpan = document.getElementById(`${input.id}-error`);
   if (errorSpan) {
     errorSpan.textContent = message;
@@ -16,7 +13,6 @@ function showError(input, message) {
 }
 
 function clearError(input) {
-  console.log("clearError call");
   const errorSpan = document.getElementById(`${input.id}-error`);
   if (errorSpan) {
     errorSpan.textContent = "";
@@ -25,44 +21,140 @@ function clearError(input) {
   }
 }
 
+function validateForm() {
+  let isValid = true;
+
+  const shipmentType = document.getElementById("shipment-type");
+  if (!Validator.isValidShipmentType(shipmentType.value)) {
+    showError(shipmentType, "Please select a valid shipment type.");
+    isValid = false;
+  } else {
+    clearError(shipmentType);
+  }
+
+  const length = document.getElementById("length");
+  if (!Validator.isPositiveNumber(length.value)) {
+    showError(length, "Enter a valid length.");
+    isValid = false;
+  } else {
+    clearError(length);
+  }
+
+  const width = document.getElementById("width");
+  if (!Validator.isPositiveNumber(width.value)) {
+    showError(width, "Enter a valid width.");
+    isValid = false;
+  } else {
+    clearError(width);
+  }
+
+  const height = document.getElementById("height");
+  if (!Validator.isPositiveNumber(height.value)) {
+    showError(height, "Enter a valid height.");
+    isValid = false;
+  } else {
+    clearError(height);
+  }
+
+  const weight = document.getElementById("weight");
+  if (!Validator.isPositiveNumber(weight.value)) {
+    showError(weight, "Enter a valid weight.");
+    isValid = false;
+  } else {
+    clearError(weight);
+  }
+
+  const cardNumber = document.getElementById("card-number");
+  if (!Validator.isValidCardNumber(cardNumber.value)) {
+    showError(cardNumber, "Enter a valid 16-digit card number.");
+    isValid = false;
+  } else {
+    clearError(cardNumber);
+  }
+
+  const expiryDate = document.getElementById("expiry-date");
+  if (!Validator.isValidExpiryDate(expiryDate.value)) {
+    showError(expiryDate, "Enter a valid expiry date (MM/YY).");
+    isValid = false;
+  } else {
+    clearError(expiryDate);
+  }
+
+  const cvv = document.getElementById("cvv");
+  if (!Validator.isValidCVV(cvv.value)) {
+    showError(cvv, "Enter a valid CVV (3-4 digits).");
+    isValid = false;
+  } else {
+    clearError(cvv);
+  }
+
+  const senderLat = document.getElementById("sender-lat");
+  if (!Validator.isValidLatitude(senderLat.value)) {
+    showError(senderLat, "Enter a valid sender latitude (-90 to 90).");
+    isValid = false;
+  } else {
+    clearError(senderLat);
+  }
+
+  const senderLon = document.getElementById("sender-lon");
+  if (!Validator.isValidLongitude(senderLon.value)) {
+    showError(senderLon, "Enter a valid sender longitude (-180 to 180).");
+    isValid = false;
+  } else {
+    clearError(senderLon);
+  }
+
+  const receiverLat = document.getElementById("receiver-lat");
+  if (!Validator.isValidLatitude(receiverLat.value)) {
+    showError(receiverLat, "Enter a valid receiver latitude (-90 to 90).");
+    isValid = false;
+  } else {
+    clearError(receiverLat);
+  }
+
+  const receiverLon = document.getElementById("receiver-lon");
+  if (!Validator.isValidLongitude(receiverLon.value)) {
+    showError(receiverLon, "Enter a valid receiver longitude (-180 to 180).");
+    isValid = false;
+  } else {
+    clearError(receiverLon);
+  }
+
+  return isValid;
+}
+
 export function createDelivery() {
   console.log("createDelivery call");
+  if (!validateForm()) {
+    alert("Please correct the errors in the form.");
+    return null;
+  }
 
   const type = document.getElementById("shipment-type").value;
-  console.log("1");
   const length = parseFloat(document.getElementById("length").value);
-  console.log("2");
   const width = parseFloat(document.getElementById("width").value);
-  console.log("3");
   const height = parseFloat(document.getElementById("height").value);
-  console.log("4");
   const weight = parseFloat(document.getElementById("weight").value);
+  const senderLat = parseFloat(document.getElementById("sender-lat").value);
+  const senderLon = parseFloat(document.getElementById("sender-lon").value);
+  const receiverLat = parseFloat(document.getElementById("receiver-lat").value);
+  const receiverLon = parseFloat(document.getElementById("receiver-lon").value);
 
-  console.log("createParcel begin process");
-  const size = { length, width, height }; // Create the size object
-  const parcel = new Parcel(type, size, weight); // Pass size and weight to Parcel
+  const deliveryCode = `D${Math.floor(Math.random() * 10000)}`;
+  const parcelCode = `P${Math.floor(Math.random() * 10000)}`;
 
-  // Створення об'єкта Delivery з необхідними параметрами
-  const deliveryCode = "D123"; // Приклад значення
-  const parcelCode = "P456"; // Приклад значення
-  const senderCoords = { lat: 50.45, lon: 30.52 }; // Приклад координат
-  const receiverCoords = { lat: 51.45, lon: 31.52 }; // Приклад координат
-
+  const parcel = new Parcel(type, { length, width, height }, weight);
   const delivery = new Delivery(
     deliveryCode,
     parcelCode,
-    senderCoords,
-    receiverCoords,
+    { lat: senderLat, lon: senderLon },
+    { lat: receiverLat, lon: receiverLon },
     parcel
   );
-  console.log("Delivery created:", delivery);
+
+  const price = delivery.calculatePrice();
+  alert(`Delivery created successfully! Price: $${price.toFixed(2)}`);
   return delivery;
 }
 
-export function saveDelivery(delivery) {
-  if (delivery) {
-    deliveries.push(delivery);
-    console.log("Delivery saved:", delivery);
-    console.log("All deliveries:", deliveries);
-  }
-}
+document.getElementById("submit-btn").addEventListener("click", createDelivery);
