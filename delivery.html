@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -8,7 +9,11 @@
     <link rel="stylesheet" href="./styles/footer.css" />
     <link rel="stylesheet" href="./styles/delivery/delivery_layout.css" />
     <link rel="stylesheet" href="./styles/delivery/delivery_main.css" />
-    <script type="module" src="https://unpkg.com/@googlemaps/extended-component-library@0.6"></script>
+    <link rel="icon" href="data:," />
+    <script
+      type="module"
+      src="https://unpkg.com/@googlemaps/extended-component-library@0.6"
+    ></script>
   </head>
   <body>
     <!-- <gmpx-api-loader key="AIzaSyD2tP18JfKszd9dG5HnW6_UGMobV1Fmux8" solution-channel="GMP_GE_mapsandplacesautocomplete_v1"></gmpx-api-loader> -->
@@ -32,73 +37,142 @@
             <div class="form">
               <div class="step-content active" data-step="1">
                 <h2>Parcel Details</h2>
-                <div class ="label">
-                <label>
-                  Shipment Type:
-                  <select>
-                    <option>Parcel</option>
-                    <option>Documents</option>
-                  </select>
-                </label>
+                <div class="label">
+                  <label>
+                    Shipment Type:
+                    <select
+                      id="shipment-type"
+                      data-validate="isValidShipmentType"
+                    >
+                      <option>Parcel</option>
+                      <option>Documents</option>
+                    </select>
+                  </label>
                 </div>
-                <div class ="label">
-                <label>
-                  Parcel Size:
-                  <input type="text" placeholder="Length" />
-                  <input type="text" placeholder="Width" />
-                  <input type="text" placeholder="Height" />
-                </label>
+                <div class="label">
+                  <label>
+                    Parcel Size:
+                    <input
+                      type="text"
+                      id="length"
+                      placeholder="Length"
+                      data-validate="isPositiveNumber"
+                    />
+                    <input
+                      type="text"
+                      id="width"
+                      placeholder="Width"
+                      data-validate="isPositiveNumber"
+                    />
+                    <input
+                      type="text"
+                      id="height"
+                      placeholder="Height"
+                      data-validate="isPositiveNumber"
+                    />
+                  </label>
+                  
+                </div>
+                <div class="label">
+                  <label>
+                    Parcel Weight:
+                    <input
+                      type="text"
+                      id="weight"
+                      placeholder="Weight"
+                      data-validate="isPositiveNumber"
+                    />
+                  </div>
               </div>
-              </div>
-              
+
               <div class="step-content" data-step="2">
                 <h2>Addresses</h2>
                 <label>
                   Sender Address:
-                  <input id="sender-address" type="text" placeholder="Sender Address" />
+                  <input
+                    id="sender-address"
+                    type="text"
+                    placeholder="Sender Address"
+                    data-validate="isNotEmpty"
+                  />
                 </label>
                 <label>
                   Receiver Address:
-                  <input id="receiver-address" type="text" placeholder="Receiver Address" />
+                  <input
+                    id="receiver-address"
+                    type="text"
+                    placeholder="Receiver Address"
+                    data-validate="isNotEmpty"
+                  />
                 </label>
                 <div id="map"></div>
                 <button id="calculate-distance">Calculate Distance</button>
                 <p id="distance-result"></p>
-              </div>              
+              </div>
 
               <div class="step-content" data-step="3">
                 <h2>Payment Details</h2>
-                <div class = "label">
-                <label>
-                  Card Number:
-                  <input type="text" placeholder="1234 5678 9012 3456" />
+                <div class="label">
+                  <label>
+                    Card Number:
+                    <input
+                      type="text"
+                      placeholder="1234 5678 9012 3456"
+                      data-validate="isValidCardNumber"
+                    />
+                  </label>
                 </div>
-                </label>
-                <div class = "label">
-                <label>
-                  Expiry Date:
-                  <input type="text" placeholder="MM/YY" />
+                <div class="label">
+                  <label>
+                    Expiry Date:
+                    <input
+                      type="text"
+                      placeholder="MM/YY"
+                      data-validate="isValidExpiryDate"
+                    />
+                  </label>
                 </div>
-                </label>
-                <div class = "label">
-                <label>
-                  CVV:
-                  <input type="text" placeholder="123" />
-                </label>
-              </div>
+                <div class="label">
+                  <label>
+                    CVV:
+                    <input
+                      type="text"
+                      placeholder="123"
+                      data-validate="isValidCVV"
+                    />
+                  </label>
+                </div>
               </div>
 
               <div class="step-content" data-step="4">
                 <h2>Verification</h2>
                 <p>Please confirm the details and submit the form.</p>
+                <div id="summary">
+                  <ul id="delivery-details">
+                    <li><strong>Type:</strong> <span id="parcel-type"></span></li>
+                    <li><strong>Size (L x W x H):</strong> <span id="parcel-size"></span></li>
+                    <li><strong>Weight:</strong> <span id="parcel-weight"></span></li>
+                    <li><strong>Delivery Code:</strong> <span id="delivery-code"></span></li>
+                    <li><strong>Parcel Code:</strong> <span id="parcel-code"></span></li>
+                    <li><strong>Status:</strong> <span id="delivery-status"></span></li>
+                    <li><strong>Sender Coordinates:</strong> <span id="sender-coords"></span></li>
+                    <li><strong>Receiver Coordinates:</strong> <span id="receiver-coords"></span></li>
+                    <li><strong>Price:</strong> <span id="delivery-price"></span></li>
+                    <li><strong>Time:</strong> <span id="delivery-time"></span></li>
+                  </ul>
+                </div>
               </div>
             </div>
+
+            <div class="error_info"></div>
 
             <!-- Navigation Buttons -->
             <div class="buttons">
               <button id="prev-btn" class="prev" disabled>Previous</button>
               <button id="next-btn" class="next">Next</button>
-              <button id="submit-btn" class="submit" style="display: none;">Submit</button>
+              <button id="submit-btn" class="submit" style="display: none">
+                Submit
+              </button>
             </div>
           </div>
         </section>
@@ -107,8 +181,8 @@
       <footer class="box footer">Footer</footer>
     </div>
 
-    <script type= "module" src="./scripts/stepper.js"></script>
+    <script type="module" src="./scripts/script.js" defer></script>
+    <script type="module" src="./scripts/stepper.js" defer></script>
     <script src="./scripts/map.js"></script>
-    <script type= "module" src="./scripts/script.js"></script>
   </body>
 </html>
