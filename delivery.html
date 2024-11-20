@@ -85,6 +85,44 @@
                 </label>
               </div>
               </div>
+                <h2>Addresses</h2>
+                <label>
+                  Sender Address:
+                  <input id="sender-address" type="text" placeholder="Sender Address" />
+                </label>
+                <label>
+                  Receiver Address:
+                  <input id="receiver-address" type="text" placeholder="Receiver Address" />
+                </label>
+                <div id="map" style="width: 100%; height: 400px; margin-top: 20px;"></div>
+                <button id="calculate-distance">Calculate Distance</button>
+                <p id="distance-result"></p>
+              </div>         
+
+              <div class="step-content" data-step="3">
+                <h2>Payment Details</h2>
+                <div class = "label">
+                <label>
+                  Card Number:
+                  <input type="text" placeholder="1234 5678 9012 3456" />
+                </div>
+                </label>
+                <div class = "label">
+                <label>
+                  Expiry Date:
+                  <input type="text" placeholder="MM/YY" />
+                </div>
+                <div class="label">
+                  <label>
+                    CVV:
+                    <input
+                      type="text"
+                      placeholder="123"
+                      data-validate="isValidCVV"
+                    />
+                  </label>
+                </div>
+              </div>
 
               <div class="step-content" data-step="4">
                 <h2>Verification</h2>
@@ -97,6 +135,9 @@
               <button id="prev-btn" class="prev" disabled>Previous</button>
               <button id="next-btn" class="next">Next</button>
               <button id="submit-btn" class="submit" style="display: none;">Submit</button>
+              <button id="submit-btn" class="submit" style="display: none">
+                Submit
+              </button>
             </div>
           </div>
         </section>

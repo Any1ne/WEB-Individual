@@ -49,7 +49,40 @@ function isStepValid() {
   return isValid;
 }
 
-// Handle Next Button Click
+function displayConfirmation() {
+  const delivery = createDelivery();
+
+  if (delivery) {
+    const confirmationBlock = document.querySelector(
+      ".step-content[data-step='4']"
+    );
+    document.getElementById("parcel-type").textContent = delivery.parcel.type;
+    document.getElementById(
+      "parcel-size"
+    ).textContent = `${delivery.parcel.size.length} x ${delivery.parcel.size.width} x ${delivery.parcel.size.height}`;
+    document.getElementById(
+      "parcel-weight"
+    ).textContent = `${delivery.parcel.weight} kg`;
+    document.getElementById("delivery-code").textContent =
+      delivery.deliveryCode;
+    document.getElementById("parcel-code").textContent = delivery.parcelCode;
+    document.getElementById("delivery-status").textContent = delivery.status;
+    document.getElementById(
+      "sender-coords"
+    ).textContent = `Latitude: ${delivery.senderCoords.lat}, Longitude: ${delivery.senderCoords.lon}`;
+    document.getElementById(
+      "receiver-coords"
+    ).textContent = `Latitude: ${delivery.receiverCoords.lat}, Longitude: ${delivery.receiverCoords.lon}`;
+    document.getElementById(
+      "delivery-price"
+    ).textContent = `$${delivery.price.toFixed(2)}`;
+    document.getElementById("delivery-time").textContent =
+      delivery.time.toLocaleString();
+
+    console.log("Confirmation display updated.");
+  }
+}
+
 nextBtn.addEventListener("click", () => {
   if (currentStep < steps.length) {
     if (isStepValid()) {
