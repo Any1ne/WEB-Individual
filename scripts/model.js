@@ -2,7 +2,7 @@ export class Parcel {
   constructor(type, size, weight) {
     console.log("Parcel constructor");
     this.type = type;
-    this.size = size; // { length, width, height }
+    this.size = size;
     this.weight = weight;
   }
 }
@@ -12,15 +12,13 @@ export class Delivery {
     console.log("Delivery constructor");
     this.deliveryCode = deliveryCode;
     this.parcelCode = parcelCode;
-    this.status = "Pending"; // Default status
-    this.senderCoords = senderCoords; // { lat, lon }
-    this.receiverCoords = receiverCoords; // { lat, lon }
-    this.price = 0; // Initial price
-    this.time = new Date(); // Timestamp for delivery creation
-    this.parcel = parcel; // Instance of Parcel
+    this.status = "Pending";
+    this.senderCoords = senderCoords;
+    this.receiverCoords = receiverCoords;
+    this.price = 0;
+    this.time = new Date();
+    this.parcel = parcel;
   }
-
-  // Calculate the distance between sender and receiver coordinates (in km)
   calculateDistance() {
     const toRadians = (deg) => (deg * Math.PI) / 180;
 
@@ -42,16 +40,15 @@ export class Delivery {
     return distance;
   }
 
-  // Calculate the delivery price
   calculatePrice() {
     const distance = this.calculateDistance(); // Distance in kilometers
     const sizeVolume =
       this.parcel.size.length *
       this.parcel.size.width *
-      this.parcel.size.height; // Volume in cubic units
-    const baseRate = 0.05; // Base price coefficient
-    const weightRate = 0.1; // Price per kg
-    const distanceRate = 0.2; // Price per km
+      this.parcel.size.height;
+    const baseRate = 0.05;
+    const weightRate = 0.1;
+    const distanceRate = 0.2;
 
     this.price =
       baseRate * sizeVolume +
@@ -62,7 +59,6 @@ export class Delivery {
     return this.price;
   }
 
-  // Update the delivery status
   updateStatus(newStatus) {
     const validStatuses = ["Pending", "In Transit", "Delivered", "Cancelled"];
     if (!validStatuses.includes(newStatus)) {
