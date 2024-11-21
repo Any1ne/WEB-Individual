@@ -1,5 +1,6 @@
 import { Delivery, Parcel } from "./model.js";
 import { Validator } from "./validation.js";
+import { addDelivery} from "./jsonbin.js";
 
 console.log("script.js is loaded");
 
@@ -49,10 +50,16 @@ export function createDelivery() {
   return delivery;
 }
 
-export function saveDelivery(delivery) {
+export async function saveDelivery(delivery) {
   if (delivery) {
-    deliveries.push(delivery);
-    console.log("Delivery saved:", delivery);
-    console.log("All deliveries:", deliveries);
+    try {
+      await addDelivery(delivery);
+      console.log("Delivery saved to JSONBin:", delivery);
+    } catch (error) {
+      showError("Failed to save delivery to JSONBin. Please try again.");
+      console.error("Error saving delivery:", error);
+    }
+  } else {
+    showError("Delivery is not defined. Cannot save to JSONBin.");
   }
 }

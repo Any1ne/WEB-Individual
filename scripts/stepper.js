@@ -110,10 +110,10 @@ prevBtn.addEventListener("click", () => {
   }
 });
 
-submitBtn.addEventListener("click", () => {
+submitBtn.addEventListener("click",  async () => {
   const delivery = createDelivery();
   if (delivery) {
-    saveDelivery(delivery);
+    await saveDelivery(delivery);
     alert("Delivery saved successfully!");
   }
 });
