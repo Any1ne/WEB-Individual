@@ -1,0 +1,24 @@
+header {
+    background-color: #F4EBE4;
+    padding: 20px 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.header-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+header .logo {
+    width: 47px;
+    height: 60px;
+}
+
+header h1 {
+    font-size: 2em;
+    margin: 0;
+    color: #333;
+}
