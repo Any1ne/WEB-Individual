@@ -77,6 +77,19 @@ h1 {
   border-radius: 5px;
 }
 
+.parcel-weight {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.parcel-weight input {
+  width: 30%;
+  padding: 10px;
+  border: 2px solid #c5a47e;
+  border-radius: 5px;
+}
+
 #map {
   border: 2px solid #c5a47e;
 }
@@ -99,3 +112,26 @@ button:disabled {
   background-color: #e0e0e0;
   cursor: not-allowed;
 }
+
+input.error {
+  border: 2px solid red;
+  outline: none;
+}
+
+/* .error {
+  border: 2px solid red;
+} */
+
+.error_info {
+  margin: 10px;
+  padding: 10px;
+  background-color: #ffe6e6;
+  border: 1px solid red;
+  color: red;
+  font-size: 1rem;
+  display: none;
+}
+
+/* .error_info {
+  display: block;
+} */

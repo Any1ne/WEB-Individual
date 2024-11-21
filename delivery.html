@@ -37,7 +37,7 @@
             <div class="form">
               <div class="step-content active" data-step="1">
                 <h2>Parcel Details</h2>
-                <div class="label">
+                <div class="label shipment-type">
                   <label>
                     Shipment Type:
                     <select
@@ -49,7 +49,7 @@
                     </select>
                   </label>
                 </div>
-                <div class="label">
+                <div class="label parcel-size">
                   <label>
                     Parcel Size:
                     <input
@@ -71,9 +71,8 @@
                       data-validate="isPositiveNumber"
                     />
                   </label>
-                  
                 </div>
-                <div class="label">
+                <div class="label parcel-weight">
                   <label>
                     Parcel Weight:
                     <input
@@ -82,7 +81,8 @@
                       placeholder="Weight"
                       data-validate="isPositiveNumber"
                     />
-                  </div>
+                  </label>
+                </div>
               </div>
 
               <div class="step-content" data-step="2">
@@ -149,23 +149,48 @@
                 <p>Please confirm the details and submit the form.</p>
                 <div id="summary">
                   <ul id="delivery-details">
-                    <li><strong>Type:</strong> <span id="parcel-type"></span></li>
-                    <li><strong>Size (L x W x H):</strong> <span id="parcel-size"></span></li>
-                    <li><strong>Weight:</strong> <span id="parcel-weight"></span></li>
-                    <li><strong>Delivery Code:</strong> <span id="delivery-code"></span></li>
-                    <li><strong>Parcel Code:</strong> <span id="parcel-code"></span></li>
-                    <li><strong>Status:</strong> <span id="delivery-status"></span></li>
-                    <li><strong>Sender Coordinates:</strong> <span id="sender-coords"></span></li>
-                    <li><strong>Receiver Coordinates:</strong> <span id="receiver-coords"></span></li>
-                    <li><strong>Price:</strong> <span id="delivery-price"></span></li>
-                    <li><strong>Time:</strong> <span id="delivery-time"></span></li>
+                    <li>
+                      <strong>Type:</strong> <span id="parcel-type"></span>
+                    </li>
+                    <li>
+                      <strong>Size (L x W x H):</strong>
+                      <span id="parcel-size"></span>
+                    </li>
+                    <li>
+                      <strong>Weight:</strong> <span id="parcel-weight"></span>
+                    </li>
+                    <li>
+                      <strong>Delivery Code:</strong>
+                      <span id="delivery-code"></span>
+                    </li>
+                    <li>
+                      <strong>Parcel Code:</strong>
+                      <span id="parcel-code"></span>
+                    </li>
+                    <li>
+                      <strong>Status:</strong>
+                      <span id="delivery-status"></span>
+                    </li>
+                    <li>
+                      <strong>Sender Coordinates:</strong>
+                      <span id="sender-coords"></span>
+                    </li>
+                    <li>
+                      <strong>Receiver Coordinates:</strong>
+                      <span id="receiver-coords"></span>
+                    </li>
+                    <li>
+                      <strong>Price:</strong> <span id="delivery-price"></span>
+                    </li>
+                    <li>
+                      <strong>Time:</strong> <span id="delivery-time"></span>
+                    </li>
                   </ul>
                 </div>
               </div>
             </div>
 
-            <div class="error_info"></div>
-
+            <div class="error_info" id="error-info">Info</div>
             <!-- Navigation Buttons -->
             <div class="buttons">
               <button id="prev-btn" class="prev" disabled>Previous</button>

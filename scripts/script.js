@@ -3,25 +3,20 @@ import { Validator } from "./validation.js";
 
 console.log("script.js is loaded");
 
-const deliveries = [];
+const deliveries = []; // ToDo: Hash table (key: delivery code, value: delivery)
 
-function showError(input, message) {
-  console.log("showError call");
-  const errorSpan = document.getElementById(`${input.id}-error`);
-  if (errorSpan) {
-    errorSpan.textContent = message;
-    errorSpan.style.display = "block";
-    input.classList.add("error");
-  }
+export function showError(message) {
+  console.log("Show error");
+  let errorInfo = document.getElementById(`error-info`);
+  errorInfo.textContent = message;
+  errorInfo.style.display = "block";
 }
 
-function clearError(input) {
-  console.log("clearError call");
-  const errorSpan = document.getElementById(`${input.id}-error`);
-  if (errorSpan) {
-    errorSpan.textContent = "";
-    errorSpan.style.display = "none";
-    input.classList.remove("error");
+export function clearError() {
+  const errorInfo = document.getElementById(`error-info`);
+  if (errorInfo) {
+    errorInfo.textContent = "";
+    errorInfo.style.display = "none";
   }
 }
 
@@ -29,20 +24,15 @@ export function createDelivery() {
   console.log("createDelivery call");
 
   const type = document.getElementById("shipment-type").value;
-  console.log("1");
   const length = parseFloat(document.getElementById("length").value);
-  console.log("2");
   const width = parseFloat(document.getElementById("width").value);
-  console.log("3");
   const height = parseFloat(document.getElementById("height").value);
-  console.log("4");
   const weight = parseFloat(document.getElementById("weight").value);
 
   console.log("createParcel begin process");
-  const size = { length, width, height }; // Create the size object
-  const parcel = new Parcel(type, size, weight); // Pass size and weight to Parcel
+  const size = { length, width, height };
+  const parcel = new Parcel(type, size, weight);
 
-  // Створення об'єкта Delivery з необхідними параметрами
   const deliveryCode = "D123"; // Приклад значення
   const parcelCode = "P456"; // Приклад значення
   const senderCoords = { lat: 50.45, lon: 30.52 }; // Приклад координат

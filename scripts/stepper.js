@@ -1,5 +1,10 @@
 import { Validator } from "./validation.js";
-import { createDelivery, saveDelivery } from "./script.js";
+import {
+  showError,
+  clearError,
+  createDelivery,
+  saveDelivery,
+} from "./script.js";
 
 const steps = document.querySelectorAll(".step");
 const stepContents = document.querySelectorAll(".step-content");
@@ -45,6 +50,13 @@ function isStepValid() {
       }
     }
   });
+
+  console.log(isValid);
+  if (!isValid) {
+    showError("Invalid input. Please correct it.");
+  } else {
+    clearError();
+  }
   return isValid;
 }
 
