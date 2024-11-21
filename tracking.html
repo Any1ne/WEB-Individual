@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="./styles/base.css" />
     <link rel="stylesheet" href="./styles/layout.css" />
     <link rel="stylesheet" href="./styles/footer.css" />
+    <link rel="stylesheet" href="./styles/tracking/tracking_main.css" />
+    <link rel="stylesheet" href="./styles/tracking/tracking_layout.css" />
   </head>
   <body>
     <div class="container">
@@ -15,10 +17,21 @@
       <main class="box main-content">
         <section class="main-content">
           <div class="transparent-box">
-
+            <div id="input-block">
+              <h2>Track Your Parcel</h2>
+              <label for="delivery-code">Enter Delivery Code:</label>
+              <input type="text" id="delivery-code" placeholder="E.g., D123" />
+              <button id="search-button">Search</button>
+            </div>
+    
+            <div id="output-block">
+              <h2>Parcel Information</h2>
+              <p id="parcel-info">Enter a delivery code to see details.</p>
+            </div>
           </div>
         </section>
       </main>
       <footer class="box footer">Footer</footer>
+      <script type="module" src="./scripts/tracking.js" defer></script>
   </body>
 </html>

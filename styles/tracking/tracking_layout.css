@@ -1,0 +1,18 @@
+.main-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.transparent-box {
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+  position: absolute;
+  width: 80%;
+  height: 90%;
+  padding: 20px;
+  text-align: left;
+  /* justify-content: space-between; */
+  overflow: auto;
+}
