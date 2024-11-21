@@ -64,28 +64,8 @@ h1 {
   text-align: center;
 }
 
-.parcel-size {
-  display: flex;
-  justify-content: space-between;
-  margin: 10px 0;
-}
 
-.parcel-size input {
-  width: 30%;
-  padding: 10px;
-  border: 2px solid #c5a47e;
-  border-radius: 5px;
-}
-
-.parcel-weight {
-  display: flex;
-  justify-content: space-between;
-  margin: 10px 0;
-}
-
-.parcel-weight input {
-  width: 30%;
-  padding: 10px;
+input {
   border: 2px solid #c5a47e;
   border-radius: 5px;
 }

@@ -30,6 +30,7 @@
 .form {
   flex: 1;
   margin-bottom: 20px;
+
 }
 
 .step-content {
@@ -37,18 +38,34 @@
 }
 
 .step-content.active {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 .label {
   display: flex;
-  width: 100%;
-  height: 100px;
+  flex-wrap: wrap;
+  min-height:fit-content;
+  justify-content: space-between;
+  margin: 10px;
 }
 
 .label label {
   width: 100%;
   height: 100%;
+}
+
+input{
+  width: 30%;
+  height: 20px;
+  padding: 10px;
+  margin: 5px 10px;
+}
+
+.size-input{
+  width: 30px;
+  height: 20px;
 }
 
 h2 {

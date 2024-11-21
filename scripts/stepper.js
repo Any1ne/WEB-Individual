@@ -6,11 +6,14 @@ import {
   saveDelivery,
 } from "./script.js";
 
+import {Delivery} from "./model.js";
+
 const steps = document.querySelectorAll(".step");
 const stepContents = document.querySelectorAll(".step-content");
 const prevBtn = document.getElementById("prev-btn");
 const nextBtn = document.getElementById("next-btn");
 const submitBtn = document.getElementById("submit-btn");
+const distanceBtn = document.getElementById("calculate-distance");
 let currentStep = 1;
 
 function updateStep() {
@@ -28,7 +31,16 @@ function updateStep() {
   submitBtn.style.display =
     currentStep === steps.length ? "inline-block" : "none";
 
-  if (currentStep === steps.length) {
+  if (currentStep === 3) {
+    console.log("Display cost")
+    const delivery = createDelivery();
+    if (delivery) {
+      const price = delivery.calculatePrice().toFixed(2);
+      document.getElementById("price-result").textContent = `${price}$`;
+    }
+  }
+
+  if (currentStep === 4) {
     displayConfirmation();
   }
 }
@@ -93,6 +105,14 @@ function displayConfirmation() {
     console.log("Confirmation display updated.");
   }
 }
+
+distanceBtn.addEventListener("click", () => {
+  const delivery = createDelivery();
+  if (delivery) {
+    const distance = delivery.calculateDistance().toFixed(3);;
+    document.getElementById("distance-result").textContent = `${distance} km`;
+  }
+});
 
 nextBtn.addEventListener("click", () => {
   if (currentStep < steps.length) {

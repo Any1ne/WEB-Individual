@@ -10,13 +10,9 @@
     <link rel="stylesheet" href="./styles/delivery/delivery_layout.css" />
     <link rel="stylesheet" href="./styles/delivery/delivery_main.css" />
     <link rel="icon" href="data:," />
-    <script
-      type="module"
-      src="https://unpkg.com/@googlemaps/extended-component-library@0.6"
-    ></script>
+
   </head>
   <body>
-    <!-- <gmpx-api-loader key="AIzaSyD2tP18JfKszd9dG5HnW6_UGMobV1Fmux8" solution-channel="GMP_GE_mapsandplacesautocomplete_v1"></gmpx-api-loader> -->
     <div class="container">
       <header class="box">Header</header>
       <nav class="box">Menu</nav>
@@ -54,18 +50,23 @@
                     Parcel Size:
                     <input
                       type="text"
+                      class="size-input"
                       id="length"
                       placeholder="Length"
                       data-validate="isPositiveNumber"
                     />
+                    x
                     <input
                       type="text"
+                      class="size-input"
                       id="width"
                       placeholder="Width"
                       data-validate="isPositiveNumber"
                     />
+                    x
                     <input
                       type="text"
+                      class="size-input"
                       id="height"
                       placeholder="Height"
                       data-validate="isPositiveNumber"
@@ -121,7 +122,7 @@
                   />
                   </label>
                 </div>
-                <div style = "display: none;"> 
+                <!-- <div style = "display: none;"> 
                   <label>
                     Sender Address:
                     <input
@@ -140,11 +141,13 @@
                       data-validate="isNotEmpty"
                     />
                   </label>
-                <div id="map"></div>
+                <div id="map"></div> -->
+                <div>
+                  <a href="https://www.google.com.ua/maps/" target="_blank">Google Map</a>
+                  <button id="calculate-distance">Calculate Distance</button>
+                  <p id="distance-result"></p>
+                </div>
               </div>
-                <button id="calculate-distance">Calculate Distance</button>
-                <p id="distance-result"></p>
-              </div>              
 
               <div class="step-content" data-step="3">
                 <h2>Payment Details</h2>
@@ -179,8 +182,8 @@
                   </label>
                 </div>
                 <div>
-                  <button id="calculate-cost">Calculate Cost</button>
-                  <p id="cost-result"></p>
+                  <!-- <button id="calculate-cost">Calculate Cost</button> -->
+                  <p id="price-result"></p>
                 </div>      
               </div>
 

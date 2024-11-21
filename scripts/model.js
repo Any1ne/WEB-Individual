@@ -20,15 +20,15 @@ export class Delivery {
     this.time = new Date();
     
   }
-  calculateDistance(senderCoords, receiverCoords) {
+  calculateDistance() {
     const toRadians = (deg) => (deg * Math.PI) / 180;
 
     const R = 6371; // Earth's radius in kilometers
-    const dLat = toRadians(receiverCoords.lat - senderCoords.lat);
-    const dLon = toRadians(receiverCoords.lon - senderCoords.lon);
+    const dLat = toRadians(this.receiverCoords.lat - this.senderCoords.lat);
+    const dLon = toRadians(this.receiverCoords.lon - this.senderCoords.lon);
 
-    const lat1 = toRadians(senderCoords.lat);
-    const lat2 = toRadians(receiverCoords.lat);
+    const lat1 = toRadians(this.senderCoords.lat);
+    const lat2 = toRadians(this.receiverCoords.lat);
 
     const a =
       Math.sin(dLat / 2) ** 2 +
@@ -41,19 +41,19 @@ export class Delivery {
     return distance;
   }
 
-  calculatePrice(size, weight, senderCoords, receiverCoords) {
-    const distance = this.calculateDistance(senderCoords, receiverCoords); // Distance in kilometers
+  calculatePrice() {
+    const distance = this.calculateDistance(); // Distance in kilometers
     const sizeVolume =
-      size.length *
-      size.width *
-      size.height;
+    this.parcel.size.length *
+    this.parcel.size.width *
+    this.parcel.size.height;
     const baseRate = 0.05;
     const weightRate = 0.1;
     const distanceRate = 0.2;
 
     this.price =
       baseRate * sizeVolume +
-      weightRate * weight +
+      weightRate * this.parcel.weight +
       distanceRate * distance;
 
     console.log(`Calculated price: $${this.price.toFixed(2)}`);
