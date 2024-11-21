@@ -12,22 +12,23 @@ export class Delivery {
     console.log("Delivery constructor");
     this.deliveryCode = deliveryCode;
     this.parcelCode = parcelCode;
+    this.parcel = parcel;
     this.status = "Pending";
     this.senderCoords = senderCoords;
     this.receiverCoords = receiverCoords;
-    this.price = 0;
+    this.price = this.calculatePrice(parcel.size, parcel.weight, senderCoords, receiverCoords);
     this.time = new Date();
-    this.parcel = parcel;
+    
   }
-  calculateDistance() {
+  calculateDistance(senderCoords, receiverCoords) {
     const toRadians = (deg) => (deg * Math.PI) / 180;
 
     const R = 6371; // Earth's radius in kilometers
-    const dLat = toRadians(this.receiverCoords.lat - this.senderCoords.lat);
-    const dLon = toRadians(this.receiverCoords.lon - this.senderCoords.lon);
+    const dLat = toRadians(receiverCoords.lat - senderCoords.lat);
+    const dLon = toRadians(receiverCoords.lon - senderCoords.lon);
 
-    const lat1 = toRadians(this.senderCoords.lat);
-    const lat2 = toRadians(this.receiverCoords.lat);
+    const lat1 = toRadians(senderCoords.lat);
+    const lat2 = toRadians(receiverCoords.lat);
 
     const a =
       Math.sin(dLat / 2) ** 2 +
@@ -40,19 +41,19 @@ export class Delivery {
     return distance;
   }
 
-  calculatePrice() {
-    const distance = this.calculateDistance(); // Distance in kilometers
+  calculatePrice(size, weight, senderCoords, receiverCoords) {
+    const distance = this.calculateDistance(senderCoords, receiverCoords); // Distance in kilometers
     const sizeVolume =
-      this.parcel.size.length *
-      this.parcel.size.width *
-      this.parcel.size.height;
+      size.length *
+      size.width *
+      size.height;
     const baseRate = 0.05;
     const weightRate = 0.1;
     const distanceRate = 0.2;
 
     this.price =
       baseRate * sizeVolume +
-      weightRate * this.parcel.weight +
+      weightRate * weight +
       distanceRate * distance;
 
     console.log(`Calculated price: $${this.price.toFixed(2)}`);

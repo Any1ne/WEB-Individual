@@ -87,28 +87,64 @@
 
               <div class="step-content" data-step="2">
                 <h2>Addresses</h2>
-                <label>
-                  Sender Address:
-                  <input
-                    id="sender-address"
+                <div class="label sender_coordinates">
+                  <label>
+                    Sender Coordinates (latitude, longitude):
+                    <input
+                      id="sender-latitude"
+                      type="text"
+                      placeholder="Latitude"
+                      data-validate="isValidLatitude"
+                    />
+                    <input
+                      id="sender-longtitude"
+                      type="text"
+                      placeholder="Longtitude"
+                      data-validate="isValidLongitude"
+                    />
+                  </label>
+                </div>
+                <div class="label receiver_coordinates">
+                  <label>
+                    Receiver Coordinates (latitude, longitude):
+                    <input
+                    id="receiver-latitude"
                     type="text"
-                    placeholder="Sender Address"
-                    data-validate="isNotEmpty"
+                    placeholder="Latitude"
+                    data-validate="isValidLatitude"
                   />
-                </label>
-                <label>
-                  Receiver Address:
                   <input
-                    id="receiver-address"
+                    id="receiver-longtitude"
                     type="text"
-                    placeholder="Receiver Address"
-                    data-validate="isNotEmpty"
+                    placeholder="Longtitude"
+                    data-validate="isValidLongitude"
                   />
-                </label>
+                  </label>
+                </div>
+                <div style = "display: none;"> 
+                  <label>
+                    Sender Address:
+                    <input
+                      id="sender-address"
+                      type="text"
+                      placeholder="Sender Address"
+                      data-validate="isNotEmpty"
+                    />
+                  </label>
+                  <label>
+                    Receiver Address:
+                    <input
+                      id="receiver-address"
+                      type="text"
+                      placeholder="Receiver Address"
+                      data-validate="isNotEmpty"
+                    />
+                  </label>
                 <div id="map"></div>
+              </div>
                 <button id="calculate-distance">Calculate Distance</button>
                 <p id="distance-result"></p>
-              </div>
+              </div>              
 
               <div class="step-content" data-step="3">
                 <h2>Payment Details</h2>
@@ -142,6 +178,10 @@
                     />
                   </label>
                 </div>
+                <div>
+                  <button id="calculate-cost">Calculate Cost</button>
+                  <p id="cost-result"></p>
+                </div>      
               </div>
 
               <div class="step-content" data-step="4">

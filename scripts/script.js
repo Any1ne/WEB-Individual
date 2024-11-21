@@ -4,8 +4,6 @@ import { addDelivery} from "./jsonbin.js";
 
 console.log("script.js is loaded");
 
-const deliveries = []; // ToDo: Hash table (key: delivery code, value: delivery)
-
 export function showError(message) {
   console.log("Show error");
   let errorInfo = document.getElementById(`error-info`);
@@ -34,11 +32,18 @@ export function createDelivery() {
   const size = { length, width, height };
   const parcel = new Parcel(type, size, weight);
 
-  const deliveryCode = "D123"; // Приклад значення
-  const parcelCode = "P456"; // Приклад значення
-  const senderCoords = { lat: 50.45, lon: 30.52 }; // Приклад координат
-  const receiverCoords = { lat: 51.45, lon: 31.52 }; // Приклад координат
+  const deliveryCode = "D123";
+  const parcelCode = "P456"; 
 
+  const senderLat= parseFloat(document.getElementById("sender-latitude").value);
+  const senderLong= parseFloat(document.getElementById("sender-longtitude").value);
+  const receiverLat= parseFloat(document.getElementById("receiver-latitude").value);
+  const receiverLong= parseFloat(document.getElementById("receiver-longtitude").value);
+
+  const senderCoords = { lat: senderLat, lon: senderLong };
+  const receiverCoords = { lat: receiverLat, lon: receiverLong };
+
+  // Create the delivery object
   const delivery = new Delivery(
     deliveryCode,
     parcelCode,
@@ -46,9 +51,11 @@ export function createDelivery() {
     receiverCoords,
     parcel
   );
+
   console.log("Delivery created:", delivery);
   return delivery;
 }
+
 
 export async function saveDelivery(delivery) {
   if (delivery) {

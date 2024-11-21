@@ -45,7 +45,9 @@ export class Validator {
 
   static isValidLongitude(lon) {
     console.log("isValidLongitude");
+    console.log(lon);
     const num = parseFloat(lon);
+    console.log(num);
     return !isNaN(num) && num >= -180 && num <= 180;
   }
 }
