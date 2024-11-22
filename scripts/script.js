@@ -1,6 +1,6 @@
 import { Delivery, Parcel } from "./model.js";
 import { Validator } from "./validation.js";
-import { addDelivery} from "./jsonbin.js";
+import { addDelivery } from "./api.js";
 
 console.log("script.js is loaded");
 
@@ -33,12 +33,20 @@ export function createDelivery() {
   const parcel = new Parcel(type, size, weight);
 
   const deliveryCode = "D123";
-  const parcelCode = "P456"; 
+  const parcelCode = "P456";
 
-  const senderLat= parseFloat(document.getElementById("sender-latitude").value);
-  const senderLong= parseFloat(document.getElementById("sender-longtitude").value);
-  const receiverLat= parseFloat(document.getElementById("receiver-latitude").value);
-  const receiverLong= parseFloat(document.getElementById("receiver-longtitude").value);
+  const senderLat = parseFloat(
+    document.getElementById("sender-latitude").value
+  );
+  const senderLong = parseFloat(
+    document.getElementById("sender-longtitude").value
+  );
+  const receiverLat = parseFloat(
+    document.getElementById("receiver-latitude").value
+  );
+  const receiverLong = parseFloat(
+    document.getElementById("receiver-longtitude").value
+  );
 
   const senderCoords = { lat: senderLat, lon: senderLong };
   const receiverCoords = { lat: receiverLat, lon: receiverLong };
@@ -55,7 +63,6 @@ export function createDelivery() {
   console.log("Delivery created:", delivery);
   return delivery;
 }
-
 
 export async function saveDelivery(delivery) {
   if (delivery) {

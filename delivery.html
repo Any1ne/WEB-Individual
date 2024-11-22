@@ -6,6 +6,9 @@
     <title>Delivery</title>
     <link rel="stylesheet" href="./styles/base.css" />
     <link rel="stylesheet" href="./styles/layout.css" />
+    <link rel="stylesheet" href="./styles/header.css" />
+    <link rel="stylesheet" href="./styles/menu.css" />
+    <link rel="stylesheet" href="./styles/main.css" />
     <link rel="stylesheet" href="./styles/footer.css" />
     <link rel="stylesheet" href="./styles/delivery/delivery_layout.css" />
     <link rel="stylesheet" href="./styles/delivery/delivery_main.css" />
@@ -13,8 +16,21 @@
   </head>
   <body>
     <div class="container">
-      <header class="box">Header</header>
-      <nav class="box">Menu</nav>
+      <header>
+        <div class="box header-content">
+          <img src="./assets/logo.png" alt="Fairy Delivery Logo" class="logo" />
+          <h1>Fairy Delivery</h1>
+        </div>
+      </header>
+      <nav class="box">
+        <ul class="menu">
+          <li><a href="#delivery">Delivery</a></li>
+          <li><a href="#tracking">Tracking</a></li>
+          <li><a href="#cost">Cost</a></li>
+          <li><a href="#news">News</a></li>
+        </ul>
+      </nav>
+
       <main class="box main-content">
         <section class="main-content">
           <div class="transparent-box">
@@ -247,7 +263,18 @@
         </section>
       </main>
 
-      <footer class="box footer">Footer</footer>
+      <footer class="box footer">
+        <div class="socials">
+          <a href="#"
+            ><img src="./assets/facebook-brands-solid.svg" alt="Facebook"
+          /></a>
+          <a href="#"
+            ><img src="./assets/discord-brands-solid.svg" alt="Discord"
+          /></a>
+          <a href="#"><img src="./assets/user-solid.svg" alt="Discord" /></a>
+        </div>
+        <p>Copyright &copy; Fairy Delivery</p>
+      </footer>
     </div>
 
     <script type="module" src="./scripts/script.js" defer></script>
