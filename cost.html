@@ -3,7 +3,136 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Tracking</title>
+    <link rel="stylesheet" href="./styles/base.css" />
+    <link rel="stylesheet" href="./styles/layout.css" />
+    <link rel="stylesheet" href="./styles/footer.css" />
+    <link rel="stylesheet" href="./styles/cost/cost_layout.css" />
+    <link rel="stylesheet" href="./styles/cost/cost_main.css" />
+    <link rel="icon" href="data:," />
   </head>
-  <body></body>
+  <body>
+    <div class="container">
+      <header class="box">Header</header>
+      <nav class="box">Menu</nav>
+      <main class="box main-content">
+        <section class="main-content">
+          <div class="transparent-box">
+            <div class ="box input-block" id="input-block">
+              <h2>Calculate cost</h2>
+
+              <div class = "box">
+                <h2>Parcel Details</h2>
+                  <div class="label shipment-type">
+                    <label>
+                      Shipment Type:
+                      <select
+                        id="shipment-type"
+                        data-validate="isValidShipmentType"
+                      >
+                        <option>Parcel</option>
+                        <option>Documents</option>
+                      </select>
+                    </label>
+                  </div>
+                  <div class="label parcel-size">
+                    <label>
+                      Parcel Size:
+                      <input
+                        type="text"
+                        class="size-input"
+                        id="length"
+                        placeholder="Length"
+                        data-validate="isPositiveNumber"
+                      />
+                      x
+                      <input
+                        type="text"
+                        class="size-input"
+                        id="width"
+                        placeholder="Width"
+                        data-validate="isPositiveNumber"
+                      />
+                      x
+                      <input
+                        type="text"
+                        class="size-input"
+                        id="height"
+                        placeholder="Height"
+                        data-validate="isPositiveNumber"
+                      />
+                    </label>
+                  </div>
+                  <div class="label parcel-weight">
+                    <label>
+                      Parcel Weight:
+                      <input
+                        type="text"
+                        id="weight"
+                        placeholder="Weight"
+                        data-validate="isPositiveNumber"
+                      />
+                    </label>
+                  </div>
+              </div>
+
+                <div class = "box">
+                <h2>Addresses</h2>
+                <div class="label sender_coordinates">
+                  <label>
+                    Sender Coordinates (latitude, longitude):
+                    <input
+                      id="sender-latitude"
+                      type="text"
+                      placeholder="Latitude"
+                      data-validate="isValidLatitude"
+                    />
+                    <input
+                      id="sender-longtitude"
+                      type="text"
+                      placeholder="Longtitude"
+                      data-validate="isValidLongitude"
+                    />
+                  </label>
+                </div>
+                <div class="label receiver_coordinates">
+                  <label>
+                    Receiver Coordinates (latitude, longitude):
+                    <input
+                    id="receiver-latitude"
+                    type="text"
+                    placeholder="Latitude"
+                    data-validate="isValidLatitude"
+                  />
+                  <input
+                    id="receiver-longtitude"
+                    type="text"
+                    placeholder="Longtitude"
+                    data-validate="isValidLongitude"
+                  />
+                  </label>
+                </div>
+              </div>
+              <div class="buttons">
+                <a href="https://www.google.com.ua/maps/" target="_blank">
+                  Google Map
+                </a>
+                <button id="calculate_distance">Calculate Distance</button>
+                <button id="calculate_cost">Calculate Cost</button>
+              </div>
+              <div class="error_info" id="error-info">Info</div>
+            </div>
+
+            <div class ="box" id="output-block">
+              <h2>Cost Information</h2>
+              
+              <p id="distance-result"></p>
+              <p id="price-result"></p>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="box footer">Footer</footer>
+      <script type="module" src="./scripts/calculator.js" defer></script>
+  </body>
 </html>

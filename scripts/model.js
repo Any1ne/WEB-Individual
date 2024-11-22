@@ -16,9 +16,8 @@ export class Delivery {
     this.status = "Pending";
     this.senderCoords = senderCoords;
     this.receiverCoords = receiverCoords;
-    this.price = this.calculatePrice(parcel.size, parcel.weight, senderCoords, receiverCoords);
+    this.price = this.calculatePrice();
     this.time = new Date();
-    
   }
   calculateDistance() {
     const toRadians = (deg) => (deg * Math.PI) / 180;
@@ -44,9 +43,9 @@ export class Delivery {
   calculatePrice() {
     const distance = this.calculateDistance(); // Distance in kilometers
     const sizeVolume =
-    this.parcel.size.length *
-    this.parcel.size.width *
-    this.parcel.size.height;
+      this.parcel.size.length *
+      this.parcel.size.width *
+      this.parcel.size.height;
     const baseRate = 0.05;
     const weightRate = 0.1;
     const distanceRate = 0.2;
