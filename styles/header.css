@@ -1,0 +1,25 @@
+header {
+  text-align: center;
+  background-color: #f4ebe4;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+header .logo {
+  width: 47px;
+  height: 60px;
+}
+
+header h1 {
+  font-size: 2em;
+  margin: 0;
+  color: #333;
+  text-align: center;
+}
