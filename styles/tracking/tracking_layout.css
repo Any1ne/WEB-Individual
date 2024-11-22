@@ -6,7 +6,7 @@
 
 .transparent-box {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   z-index: 10;
   position: absolute;
   width: 80%;
@@ -16,3 +16,13 @@
   /* justify-content: space-between; */
   overflow: auto;
 }
+
+#input-block,
+#output-block {
+  flex: 1;
+  margin: 10px;
+  margin-bottom: 20px;
+  padding: 15px;
+}
+
+/* media() */
