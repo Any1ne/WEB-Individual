@@ -30,7 +30,6 @@
 .form {
   flex: 1;
   margin-bottom: 20px;
-
 }
 
 .step-content {
@@ -46,7 +45,7 @@
 .label {
   display: flex;
   flex-wrap: wrap;
-  min-height:fit-content;
+  min-height: fit-content;
   justify-content: space-between;
   margin: 10px;
 }
@@ -56,14 +55,14 @@
   height: 100%;
 }
 
-input{
+input {
   width: 30%;
   height: 20px;
   padding: 10px;
   margin: 5px 10px;
 }
 
-.size-input{
+.size-input {
   width: 30px;
   height: 20px;
 }
