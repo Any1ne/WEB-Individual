@@ -1,6 +1,6 @@
 import { Delivery, Parcel } from "./model.js";
 import { Validator } from "./validation.js";
-import { addDelivery } from "./api.js";
+import { addDelivery, updateDeliveryStatus } from "./api.js";
 
 console.log("script.js is loaded");
 
@@ -32,8 +32,8 @@ export function createDelivery() {
   const size = { length, width, height };
   const parcel = new Parcel(type, size, weight);
 
-  const deliveryCode = "D123";
-  const parcelCode = "P456";
+  const deliveryCode = generateUniqueCode("D");
+  const parcelCode = generateUniqueCode("P");
 
   const senderLat = parseFloat(
     document.getElementById("sender-latitude").value
@@ -64,11 +64,35 @@ export function createDelivery() {
   return delivery;
 }
 
+function generateUniqueCode(prefix) {
+  const randomPart = Math.floor(1000 + Math.random() * 9000);
+  const timestampPart = Date.now().toString().slice(-5);
+  return `${prefix}-${randomPart}${timestampPart}`;
+}
+
 export async function saveDelivery(delivery) {
   if (delivery) {
     try {
       await addDelivery(delivery);
       console.log("Delivery saved to JSONBin:", delivery);
+
+      setTimeout(async () => {
+        try {
+          const newStatus = "In Transit";
+          await updateDeliveryStatus(delivery.deliveryCode, newStatus);
+
+          setTimeout(async () => {
+            try {
+              const newStatus = "Delivered";
+              await updateDeliveryStatus(delivery.deliveryCode, newStatus);
+            } catch (error) {
+              console.error("Error updating delivery status:", error);
+            }
+          }, 10000);
+        } catch (error) {
+          console.error("Error updating delivery status:", error);
+        }
+      }, 10000);
     } catch (error) {
       showError("Failed to save delivery to JSONBin. Please try again.");
       console.error("Error saving delivery:", error);

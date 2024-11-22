@@ -6,7 +6,7 @@ import {
   saveDelivery,
 } from "./script.js";
 
-import {Delivery} from "./model.js";
+import { Delivery } from "./model.js";
 
 const steps = document.querySelectorAll(".step");
 const stepContents = document.querySelectorAll(".step-content");
@@ -32,7 +32,7 @@ function updateStep() {
     currentStep === steps.length ? "inline-block" : "none";
 
   if (currentStep === 3) {
-    console.log("Display cost")
+    console.log("Display cost");
     const delivery = createDelivery();
     if (delivery) {
       const price = delivery.calculatePrice().toFixed(2);
@@ -109,7 +109,7 @@ function displayConfirmation() {
 distanceBtn.addEventListener("click", () => {
   const delivery = createDelivery();
   if (delivery) {
-    const distance = delivery.calculateDistance().toFixed(3);;
+    const distance = delivery.calculateDistance().toFixed(3);
     document.getElementById("distance-result").textContent = `${distance} km`;
   }
 });
@@ -130,11 +130,13 @@ prevBtn.addEventListener("click", () => {
   }
 });
 
-submitBtn.addEventListener("click",  async () => {
+submitBtn.addEventListener("click", async () => {
   const delivery = createDelivery();
   if (delivery) {
     await saveDelivery(delivery);
     alert("Delivery saved successfully!");
+    submitBtn.disabled = true;
+    prevBtn.disabled = true;
   }
 });
 
