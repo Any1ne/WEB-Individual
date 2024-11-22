@@ -23,3 +23,24 @@ header h1 {
   color: #333;
   text-align: center;
 }
+
+.header-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.logo_name {
+  display: flex;
+  align-content: center;
+  text-align: center;
+}
+
+/* .logo_name h1 {
+  display: block;
+  height: 50px;
+} */
+
+/* .header-link .header-content {
+  display: flex;
+  align-items: center;
+} */
