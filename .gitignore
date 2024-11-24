@@ -4,3 +4,4 @@ scripts/server/.env
 /scripts/server/node_modules
 /scripts/node_modules
 /scripts/typescript
+/scripts/map.js
