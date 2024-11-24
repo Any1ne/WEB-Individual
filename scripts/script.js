@@ -1,6 +1,6 @@
 import { Delivery, Parcel } from "./model.js";
 import { Validator } from "./validation.js";
-import { addDelivery, updateDeliveryStatus } from "./api.js";
+import { addDelivery } from "./server/api.js"; // Використовуємо імпорт з api.js
 
 console.log("script.js is loaded");
 
@@ -71,33 +71,27 @@ function generateUniqueCode(prefix) {
 }
 
 export async function saveDelivery(delivery) {
+  console.log("Delivery start saving to server:");
   if (delivery) {
     try {
-      await addDelivery(delivery);
-      console.log("Delivery saved to JSONBin:", delivery);
+      const response = await fetch("http://134.249.60.9:3000/add-delivery", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(delivery),
+      });
 
-      setTimeout(async () => {
-        try {
-          const newStatus = "In Transit";
-          await updateDeliveryStatus(delivery.deliveryCode, newStatus);
+      if (!response.ok) {
+        throw new Error("Failed to save delivery to server.");
+      }
 
-          setTimeout(async () => {
-            try {
-              const newStatus = "Delivered";
-              await updateDeliveryStatus(delivery.deliveryCode, newStatus);
-            } catch (error) {
-              console.error("Error updating delivery status:", error);
-            }
-          }, 10000);
-        } catch (error) {
-          console.error("Error updating delivery status:", error);
-        }
-      }, 10000);
+      console.log("Delivery saved to server:", delivery);
     } catch (error) {
-      showError("Failed to save delivery to JSONBin. Please try again.");
+      showError("Failed to save delivery to server. Please try again.");
       console.error("Error saving delivery:", error);
     }
   } else {
-    showError("Delivery is not defined. Cannot save to JSONBin.");
+    showError("Delivery is not defined. Cannot save to server.");
   }
 }
