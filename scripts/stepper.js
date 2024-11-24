@@ -133,7 +133,7 @@ prevBtn.addEventListener("click", () => {
 submitBtn.addEventListener("click", async () => {
   if (delivery) {
     await saveDelivery(delivery);
-    alert("Delivery saved successfully!");
+    alert(`Delivery saved successfully! ${delivery}`);
     submitBtn.disabled = true;
     prevBtn.disabled = true;
   }
