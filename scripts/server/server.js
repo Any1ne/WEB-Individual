@@ -75,6 +75,10 @@ app.delete("/delete-delivery", async (req, res) => {
   }
 });
 
+app.use("/", (req, res, next) => {
+  res.send("Server connected🔒");
+});
+
 https.createServer(credentials, app).listen(PORT, () => {
   console.log(`Server is running on https://134.249.60.9:${PORT}`);
 });
