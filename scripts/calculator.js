@@ -1,5 +1,5 @@
 import { Validator } from "./validation.js";
-import { showError, clearError, createDelivery } from "./script.js";
+import { showError, clearError, createDelivery } from "./server/script.js";
 
 const distanceBtn = document.getElementById("calculate_distance");
 const costBtn = document.getElementById("calculate_cost");
