@@ -11,8 +11,8 @@ import {
 const app = express();
 const PORT = 3001;
 
+app.use(cors({ origin: "https://any1ne.github.io/WEB-Individual/" })); // { origin: "https://any1ne.github.io/WEB-Individual/" } { origin: "http://127.0.0.1:5500" }
 app.use(bodyParser.json());
-app.use(cors()); // { origin: "https://any1ne.github.io/WEB-Individual/" }"https://any1ne.github.io/WEB-Individual/"
 
 app.post("/add-delivery", async (req, res) => {
   const delivery = req.body;
