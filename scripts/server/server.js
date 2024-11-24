@@ -3,12 +3,14 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import https from "https";
 import fs from "fs";
+import dotenv from "dotenv";
 import {
   addDelivery,
   getDeliveries,
   updateDeliveryStatus,
   deleteDelivery,
 } from "./api.js";
+dotenv.config();
 
 const app = express();
 const PORT = 3001;
@@ -18,6 +20,18 @@ const credentials = { key: privateKey, cert: certificate };
 
 app.use(cors({ origin: "https://any1ne.github.io" })); // { origin: "https://any1ne.github.io" } { origin: "http://127.0.0.1:5500" }
 app.use(bodyParser.json());
+app.use(authenticateAPIKey);
+
+const API_KEY = process.env.API_KEY_SERVER;
+
+function authenticateAPIKey(req, res, next) {
+  const clientKey = req.headers["x-api-key"];
+  if (clientKey && clientKey === API_KEY) {
+    next();
+  } else {
+    res.status(403).send({ error: "Forbidden: Invalid API Key" });
+  }
+}
 
 const deliveryStatuses = ["Pending", "In Progress", "Dispatched", "Delivered"];
 const statusDurations = [5000, 30000, 30000];

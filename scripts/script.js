@@ -1,6 +1,6 @@
 import { Delivery, Parcel } from "./model.js";
-import { Validator } from "./validation.js";
-import { addDelivery } from "./server/api.js"; // Використовуємо імпорт з api.js
+import dotenv from "dotenv";
+dotenv.config();
 
 console.log("script.js is loaded");
 
@@ -78,6 +78,7 @@ export async function saveDelivery(delivery) {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "x-api-key": process.env.API_KEY_SERVER,
         },
         body: JSON.stringify(delivery),
       });
