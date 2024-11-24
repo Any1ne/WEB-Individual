@@ -41,8 +41,10 @@ function updateStep() {
   }
 
   if (currentStep === 4) {
-    displayConfirmation(delivery);
+    displayConfirmation();
   }
+
+  console.log("Delivery", delivery);
 }
 
 function isStepValid() {
@@ -72,7 +74,7 @@ function isStepValid() {
   return isValid;
 }
 
-function displayConfirmation(delivery) {
+function displayConfirmation() {
   if (delivery) {
     const confirmationBlock = document.querySelector(
       ".step-content[data-step='4']"
@@ -130,7 +132,7 @@ prevBtn.addEventListener("click", () => {
 submitBtn.addEventListener("click", async () => {
   if (delivery) {
     await saveDelivery(delivery);
-    alert(`Delivery saved successfully! ${delivery}`);
+    console.log("Delivery saved successfully!", delivery);
     submitBtn.disabled = true;
     prevBtn.disabled = true;
   }
