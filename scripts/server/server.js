@@ -1,6 +1,8 @@
 import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
+import https from "https";
+import fs from "fs";
 import {
   addDelivery,
   getDeliveries,
@@ -10,6 +12,9 @@ import {
 
 const app = express();
 const PORT = 3001;
+const privateKey = fs.readFileSync("./cert/key.pem", "utf8");
+const certificate = fs.readFileSync("./cert/cert.pem", "utf8");
+const credentials = { key: privateKey, cert: certificate };
 
 app.use(cors({ origin: "https://any1ne.github.io/WEB-Individual/" })); // { origin: "https://any1ne.github.io/WEB-Individual/" } { origin: "http://127.0.0.1:5500" }
 app.use(bodyParser.json());
@@ -70,6 +75,6 @@ app.delete("/delete-delivery", async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+https.createServer(credentials, app).listen(PORT, () => {
+  console.log(`Server is running on https://134.249.60.9:${PORT}`);
 });
