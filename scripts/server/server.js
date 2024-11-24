@@ -18,7 +18,7 @@ const privateKey = fs.readFileSync("./cert/key.pem", "utf8");
 const certificate = fs.readFileSync("./cert/cert.pem", "utf8");
 const credentials = { key: privateKey, cert: certificate };
 
-app.use(cors()); // { origin: "https://any1ne.github.io" } { origin: "http://127.0.0.1:5500" }
+app.use(cors({ origin: "https://any1ne.github.io" })); // { origin: "https://any1ne.github.io" } { origin: "http://127.0.0.1:5500" }
 app.use(bodyParser.json());
 app.use(authenticateAPIKey);
 

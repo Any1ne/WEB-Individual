@@ -72,6 +72,7 @@ export async function saveDelivery(delivery) {
   if (delivery) {
     try {
       const response = await fetch(`${config.IP_SERVER}/add-delivery`, {
+        //${config.IP_SERVER}add-delivery`
         method: "POST",
         headers: {
           "Content-Type": "application/json",
