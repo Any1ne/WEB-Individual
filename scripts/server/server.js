@@ -9,7 +9,7 @@ import {
 } from "./api.js";
 
 const app = express();
-const PORT = 3000;
+const PORT = 3001;
 
 app.use(bodyParser.json());
 app.use(cors({ origin: "https://any1ne.github.io/WEB-Individual/" })); // "https://any1ne.github.io/WEB-Individual/"
