@@ -1,9 +1,27 @@
-import { getDeliveries } from "./server/api.js";
+import { config } from "./server/config.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const searchButton = document.getElementById("search-button");
   const deliveryCodeInput = document.getElementById("delivery-code");
   const parcelInfo = document.getElementById("parcel-info");
+
+  async function fetchDeliveries() {
+    try {
+      const response = await fetch(`${config.IP_SERVER}/deliveries`, {
+        headers: {
+          "Content-Type": "application/json",
+          "X-API-Key": config.API_KEY_SERVER,
+        },
+      });
+      if (!response.ok) {
+        throw new Error(`Failed to fetch deliveries: ${response.statusText}`);
+      }
+      return await response.json();
+    } catch (error) {
+      console.error("Error fetching deliveries:", error);
+      throw error;
+    }
+  }
 
   searchButton.addEventListener("click", async () => {
     const deliveryCode = deliveryCodeInput.value.trim();
@@ -13,11 +31,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     try {
-      const deliveries = await getDeliveries();
+      const deliveries = await fetchDeliveries();
       const delivery = deliveries.find((d) => d.delivery_code === deliveryCode);
 
       if (delivery) {
-        // Форматування результату
         parcelInfo.innerHTML = `
           <strong>Delivery Code:</strong> ${delivery.delivery_code}<br />
           <strong>Parcel Code:</strong> ${delivery.parcel_code}<br />
@@ -45,7 +62,6 @@ document.addEventListener("DOMContentLoaded", () => {
     } catch (error) {
       parcelInfo.textContent =
         "An error occurred while fetching the deliveries. Please try again later.";
-      console.error(error);
     }
   });
 });

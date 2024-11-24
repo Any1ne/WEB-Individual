@@ -1,5 +1,5 @@
-import { Delivery, Parcel } from "../model.js";
-import { config } from "./config_script.js";
+import { Delivery, Parcel } from "./model.js";
+import { config } from "./server/config.js";
 
 export function showError(message) {
   console.log("Show error");
