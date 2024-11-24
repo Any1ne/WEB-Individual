@@ -16,8 +16,11 @@ const privateKey = fs.readFileSync("./cert/key.pem", "utf8");
 const certificate = fs.readFileSync("./cert/cert.pem", "utf8");
 const credentials = { key: privateKey, cert: certificate };
 
-app.use(cors({ origin: "https://any1ne.github.io" })); // { origin: "https://any1ne.github.io/WEB-Individual/" } { origin: "http://127.0.0.1:5500" }
+app.use(cors({ origin: "https://any1ne.github.io" })); // { origin: "https://any1ne.github.io" } { origin: "http://127.0.0.1:5500" }
 app.use(bodyParser.json());
+
+const deliveryStatuses = ["Pending", "In Progress", "Dispatched", "Delivered"];
+const statusDurations = [5000, 30000, 30000];
 
 app.post("/add-delivery", async (req, res) => {
   const delivery = req.body;
@@ -26,11 +29,43 @@ app.post("/add-delivery", async (req, res) => {
   try {
     await addDelivery(delivery);
     res.status(200).send({ message: "Delivery added successfully!" });
+
+    updateDeliveryStatusSequentially(delivery.deliveryCode);
   } catch (error) {
     console.error(`Помилка при додаванні доставки: ${error}`);
     res.status(500).send({ error: "Failed to add delivery." });
   }
 });
+
+async function updateDeliveryStatusSequentially(deliveryCode) {
+  for (
+    let currentIndex = 0;
+    currentIndex < deliveryStatuses.length - 1;
+    currentIndex++
+  ) {
+    const newStatus = deliveryStatuses[currentIndex + 1];
+    const duration = statusDurations[currentIndex];
+
+    try {
+      await new Promise((resolve) => setTimeout(resolve, duration));
+
+      console.log(`Оновлюємо статус доставки ${deliveryCode} на: ${newStatus}`);
+      await updateDeliveryStatus(deliveryCode, newStatus);
+      console.log(`Статус доставки ${deliveryCode} оновлено на: ${newStatus}`);
+    } catch (error) {
+      console.error(
+        `Помилка при оновленні статусу доставки ${deliveryCode}: ${error}`
+      );
+      break;
+    }
+
+    console.log(
+      `Доставка ${deliveryCode} досягла фінального статусу: ${
+        deliveryStatuses[deliveryStatuses.length - 1]
+      }`
+    );
+  }
+}
 
 app.get("/deliveries", async (req, res) => {
   console.log("GET /deliveries - Запит на отримання всіх доставок");

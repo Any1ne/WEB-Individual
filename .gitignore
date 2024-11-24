@@ -1,3 +1,5 @@
 
 /toMerge
 /scripts/server/cert
+scripts/server/.env
+/scripts/server/node_modules

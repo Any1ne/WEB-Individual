@@ -1,6 +1,9 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 const API_URL = "https://api.jsonbin.io/v3/b";
 const BIN_ID = "673f3c65e41b4d34e4580893";
-const API_KEY = "$2a$10$.EBqQkZESprztkJNX05WjOMvp7BpilP39ODZJy2FnZJD1c.kxxffm";
+const API_KEY = process.env.API_KEY;
 
 const headers = {
   "Content-Type": "application/json",
