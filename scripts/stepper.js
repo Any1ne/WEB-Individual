@@ -105,7 +105,6 @@ function displayConfirmation(delivery) {
 }
 
 distanceBtn.addEventListener("click", () => {
-  const delivery = createDelivery();
   if (delivery) {
     const distance = delivery.calculateDistance().toFixed(3);
     document.getElementById("distance-result").textContent = `${distance} km`;
