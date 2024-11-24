@@ -129,5 +129,5 @@ app.use("/", (req, res, next) => {
 });
 
 https.createServer(credentials, app).listen(PORT, () => {
-  console.log(`Server is running on https://134.249.60.9:${PORT}`);
+  console.log(`Server is running on ${process.env.IP_SERVER}`);
 });

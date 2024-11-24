@@ -1,8 +1,5 @@
 import { Delivery, Parcel } from "../model.js";
-import dotenv from "dotenv";
-dotenv.config();
-
-console.log("script.js is loaded");
+import { config } from "./config_script.js";
 
 export function showError(message) {
   console.log("Show error");
@@ -74,11 +71,11 @@ export async function saveDelivery(delivery) {
   console.log("Delivery start saving to server:");
   if (delivery) {
     try {
-      const response = await fetch(`${process.env.IP_SERVER}/add-delivery`, {
+      const response = await fetch(`${config.IP_SERVER}/add-delivery`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "x-api-key": process.env.API_KEY_SERVER,
+          "x-api-key": config.API_KEY_SERVER,
         },
         body: JSON.stringify(delivery),
       });

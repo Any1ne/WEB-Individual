@@ -4,8 +4,8 @@ import {
   clearError,
   createDelivery,
   saveDelivery,
-} from "./script.js";
-import { Delivery } from "./model.js";
+} from "./server/script.js";
+// import { Delivery } from "./model.js";
 
 const steps = document.querySelectorAll(".step");
 const stepContents = document.querySelectorAll(".step-content");
