@@ -1,4 +1,4 @@
-import { getDeliveries } from "./api.js"; // Імпортуємо функцію отримання даних
+import { getDeliveries } from "./server/api.js"; // Імпортуємо функцію отримання даних
 
 document.addEventListener("DOMContentLoaded", () => {
   const searchButton = document.getElementById("search-button");
