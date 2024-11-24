@@ -13,7 +13,7 @@ import {
 dotenv.config();
 
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT;
 const privateKey = fs.readFileSync("./cert/key.pem", "utf8");
 const certificate = fs.readFileSync("./cert/cert.pem", "utf8");
 const credentials = { key: privateKey, cert: certificate };
