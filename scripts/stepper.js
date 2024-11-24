@@ -14,6 +14,7 @@ const nextBtn = document.getElementById("next-btn");
 const submitBtn = document.getElementById("submit-btn");
 const distanceBtn = document.getElementById("calculate-distance");
 let currentStep = 1;
+let delivery = null;
 
 function updateStep() {
   steps.forEach((step, index) => {
@@ -32,7 +33,7 @@ function updateStep() {
 
   if (currentStep === 3) {
     console.log("Display cost");
-    const delivery = createDelivery();
+    delivery = createDelivery();
     if (delivery) {
       const price = delivery.calculatePrice().toFixed(2);
       document.getElementById("price-result").textContent = `${price}$`;
@@ -40,7 +41,7 @@ function updateStep() {
   }
 
   if (currentStep === 4) {
-    displayConfirmation();
+    displayConfirmation(delivery);
   }
 }
 
@@ -130,7 +131,6 @@ prevBtn.addEventListener("click", () => {
 });
 
 submitBtn.addEventListener("click", async () => {
-  const delivery = createDelivery();
   if (delivery) {
     await saveDelivery(delivery);
     alert("Delivery saved successfully!");
