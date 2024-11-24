@@ -72,9 +72,7 @@ function isStepValid() {
   return isValid;
 }
 
-function displayConfirmation() {
-  const delivery = createDelivery();
-
+function displayConfirmation(delivery) {
   if (delivery) {
     const confirmationBlock = document.querySelector(
       ".step-content[data-step='4']"
