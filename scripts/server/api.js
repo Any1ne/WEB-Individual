@@ -1,6 +1,6 @@
+import config from "./config_script.js";
 const API_URL = "https://api.jsonbin.io/v3/b";
 const BIN_ID = "673f3c65e41b4d34e4580893";
-import { config } from "./config_script.js";
 
 const API_KEY = config.API_KEY_JSONBIN;
 
