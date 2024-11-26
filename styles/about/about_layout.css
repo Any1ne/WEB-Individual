@@ -1,0 +1,62 @@
+.main-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.transparent-box {
+  display: block;
+  padding: 10px;
+
+  z-index: 10;
+  position: absolute;
+  width: 80%;
+  height: 90%;
+  padding: 20px;
+  text-align: left;
+
+  /* justify-content: space-between; */
+  overflow: auto;
+}
+
+p {
+  margin: 20px;
+}
+
+#input-block,
+#output-block {
+  flex: 1;
+  margin: 10px;
+  margin-bottom: 20px;
+  padding: 15px;
+}
+
+input {
+  width: 30%;
+  height: 20px;
+  padding: 10px;
+  margin: 5px 10px;
+}
+
+.size-input {
+  width: 30px;
+  height: 20px;
+}
+
+.buttons {
+  display: flex;
+  margin-top: auto;
+  justify-content: space-between;
+  margin-top: 20px;
+  justify-content: end;
+  position: relative;
+  bottom: 20px;
+  right: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 0 10px;
+}
+
+/* media() */
