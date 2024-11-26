@@ -36,8 +36,9 @@
 }
 
 .link a:hover {
-  background-color: #ffa07a;
+  background-color: #a68111;
   color: #fff;
+  border-radius: 20px;
 }
 
 .link a:hover .icon {
@@ -63,9 +64,4 @@
 .transparent-box p {
   margin: 10px 0 0;
   font-size: 1.2em;
-}
-
-.link a:hover {
-  background-color: #ffa07a;
-  color: #fff;
 }
