@@ -24,6 +24,7 @@
 }
 
 .step {
+  margin: 5px;
   padding: 10px;
 }
 
@@ -62,8 +63,8 @@ input {
   margin: 5px 10px;
 }
 
-.size-input {
-  width: 30px;
+.size_input {
+  width: 65px;
   height: 20px;
 }
 
@@ -87,8 +88,9 @@ h2 {
   bottom: 20px;
   right: 20px;
 }
-
+.link_map,
 button {
+  
   padding: 10px 20px;
   margin: 0 10px;
 }

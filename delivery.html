@@ -21,7 +21,7 @@
           <a href="./index.html" class="header-link">
             <div class="logo_name">
               <img
-                src="./assets/logo.png"
+                src="./styles/assets/logo.png"
                 alt="Fairy Delivery Logo"
                 class="logo"
               />
@@ -59,52 +59,59 @@
                 <div class="label shipment-type">
                   <label>
                     Shipment Type:
-                    <select
-                      id="shipment-type"
-                      data-validate="isValidShipmentType"
-                    >
-                      <option>Parcel</option>
-                      <option>Documents</option>
-                    </select>
+                    <div>
+                      <select
+                        id="shipment-type"
+                        data-validate="isValidShipmentType"
+                      >
+                        <option>Parcel</option>
+                        <option>Documents</option>
+                      </select>
+                    </div>
                   </label>
                 </div>
                 <div class="label parcel-size">
                   <label>
-                    Parcel Size:
-                    <input
-                      type="text"
-                      class="size-input"
-                      id="length"
-                      placeholder="Length"
-                      data-validate="isPositiveNumber"
-                    />
-                    x
-                    <input
-                      type="text"
-                      class="size-input"
-                      id="width"
-                      placeholder="Width"
-                      data-validate="isPositiveNumber"
-                    />
-                    x
-                    <input
-                      type="text"
-                      class="size-input"
-                      id="height"
-                      placeholder="Height"
-                      data-validate="isPositiveNumber"
-                    />
+                    Parcel Size (cm):
+                    <div>
+                      <input
+                        type="text"
+                        class="size_input"
+                        id="length"
+                        placeholder="Length"
+                        data-validate="isPositiveNumber"
+                      />
+                      x
+                      <input
+                        type="text"
+                        class="size_input"
+                        id="width"
+                        placeholder="Width"
+                        data-validate="isPositiveNumber"
+                      />
+                      x
+                      <input
+                        type="text"
+                        class="size_input"
+                        id="height"
+                        placeholder="Height"
+                        data-validate="isPositiveNumber"
+                      />
+                    </div>
                   </label>
                 </div>
                 <div class="label parcel-weight">
                   <label>
-                    Parcel Weight:
-                    <input
-                      type="text"
-                      id="weight"
-                      placeholder="Weight"
-                      data-validate="isPositiveNumber"
-                    />
+                    Parcel Weight (kg):
+                    <div>
+                      <input
+                        type="text"
+                        class="size_input"
+                        id="weight"
+                        placeholder="Weight"
+                        data-validate="isPositiveNumber"
+                      />
+                    </div>
                   </label>
                 </div>
               </div>
@@ -114,35 +121,39 @@
                 <div class="label sender_coordinates">
                   <label>
                     Sender Coordinates (latitude, longitude):
-                    <input
-                      id="sender-latitude"
-                      type="text"
-                      placeholder="Latitude"
-                      data-validate="isValidLatitude"
-                    />
-                    <input
-                      id="sender-longtitude"
-                      type="text"
-                      placeholder="Longtitude"
-                      data-validate="isValidLongitude"
-                    />
+                    <div>
+                      <input
+                        id="sender-latitude"
+                        type="text"
+                        placeholder="Latitude"
+                        data-validate="isValidLatitude"
+                      />
+                      <input
+                        id="sender-longtitude"
+                        type="text"
+                        placeholder="Longtitude"
+                        data-validate="isValidLongitude"
+                      />
+                    </div>
                   </label>
                 </div>
                 <div class="label receiver_coordinates">
                   <label>
                     Receiver Coordinates (latitude, longitude):
-                    <input
-                      id="receiver-latitude"
-                      type="text"
-                      placeholder="Latitude"
-                      data-validate="isValidLatitude"
-                    />
-                    <input
-                      id="receiver-longtitude"
-                      type="text"
-                      placeholder="Longtitude"
-                      data-validate="isValidLongitude"
-                    />
+                    <div>
+                      <input
+                        id="receiver-latitude"
+                        type="text"
+                        placeholder="Latitude"
+                        data-validate="isValidLatitude"
+                      />
+                      <input
+                        id="receiver-longtitude"
+                        type="text"
+                        placeholder="Longtitude"
+                        data-validate="isValidLongitude"
+                      />
+                    </div>
                   </label>
                 </div>
                 <!-- <div style = "display: none;"> 
@@ -166,7 +177,11 @@
                   </label>
                 <div id="map"></div> -->
                 <div>
-                  <a href="https://www.google.com.ua/maps/" target="_blank">
+                  <a
+                    class="link_map"
+                    href="https://www.google.com.ua/maps/"
+                    target="_blank"
+                  >
                     Google Map
                   </a>
                   <button id="calculate-distance">Calculate Distance</button>
@@ -179,31 +194,37 @@
                 <div class="label">
                   <label>
                     Card Number:
-                    <input
-                      type="text"
-                      placeholder="1234 5678 9012 3456"
-                      data-validate="isValidCardNumber"
-                    />
+                    <div>
+                      <input
+                        type="text"
+                        placeholder="1234 5678 9012 3456"
+                        data-validate="isValidCardNumber"
+                      />
+                    </div>
                   </label>
                 </div>
                 <div class="label">
                   <label>
                     Expiry Date:
-                    <input
-                      type="text"
-                      placeholder="MM/YY"
-                      data-validate="isValidExpiryDate"
-                    />
+                    <div>
+                      <input
+                        type="text"
+                        placeholder="MM/YY"
+                        data-validate="isValidExpiryDate"
+                      />
+                    </div>
                   </label>
                 </div>
                 <div class="label">
                   <label>
                     CVV:
-                    <input
-                      type="text"
-                      placeholder="123"
-                      data-validate="isValidCVV"
-                    />
+                    <div>
+                      <input
+                        type="text"
+                        placeholder="123"
+                        data-validate="isValidCVV"
+                      />
+                    </div>
                   </label>
                 </div>
                 <div>
@@ -230,6 +251,7 @@
                     <li>
                       <strong>Delivery Code:</strong>
                       <span id="delivery-code"></span>
+                      <span class="reminder_span"> Don't forget your code</span>
                     </li>
                     <li>
                       <strong>Parcel Code:</strong>
@@ -255,6 +277,8 @@
                     </li>
                   </ul>
                 </div>
+
+                <div><p id="status-result"></p></div>
               </div>
             </div>
 
@@ -274,18 +298,21 @@
       <footer class="box footer">
         <div class="socials">
           <a href="#"
-            ><img src="./assets/facebook-brands-solid.svg" alt="Facebook"
+            ><img
+              src="./styles/assets/facebook-brands-solid.svg"
+              alt="Facebook"
           /></a>
           <a href="#"
-            ><img src="./assets/discord-brands-solid.svg" alt="Discord"
+            ><img src="./styles/assets/discord-brands-solid.svg" alt="Discord"
           /></a>
-          <a href="#"><img src="./assets/user-solid.svg" alt="Discord" /></a>
+          <a href="#"
+            ><img src="./styles/assets/user-solid.svg" alt="Discord"
+          /></a>
         </div>
         <p>Copyright &copy; Fairy Delivery</p>
       </footer>
     </div>
 
-    <!-- <script type="module" src="./scripts/server/script.js" defer></script> -->
     <script type="module" src="./scripts/stepper.js" defer></script>
     <!-- <script src="./scripts/map.js"></script> -->
   </body>

@@ -48,7 +48,6 @@ export function createDelivery() {
   const senderCoords = { lat: senderLat, lon: senderLong };
   const receiverCoords = { lat: receiverLat, lon: receiverLong };
 
-  // Create the delivery object
   const delivery = new Delivery(
     deliveryCode,
     parcelCode,
@@ -72,7 +71,6 @@ export async function saveDelivery(delivery) {
   if (delivery) {
     try {
       const response = await fetch(`${config.IP_SERVER}/add-delivery`, {
-        //${config.IP_SERVER}add-delivery`
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -86,11 +84,14 @@ export async function saveDelivery(delivery) {
       }
 
       console.log("Delivery saved to server:", delivery);
+      return 1; // Успішно
     } catch (error) {
       showError("Failed to save delivery to server. Please try again.");
       console.error("Error saving delivery:", error);
+      return 0; // Помилка
     }
   } else {
     showError("Delivery is not defined. Cannot save to server.");
+    return 0; // Помилка
   }
 }

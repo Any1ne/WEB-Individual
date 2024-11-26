@@ -46,9 +46,9 @@ export class Delivery {
       this.parcel.size.length *
       this.parcel.size.width *
       this.parcel.size.height;
-    const baseRate = 0.05;
-    const weightRate = 0.1;
-    const distanceRate = 0.2;
+    const baseRate = 0.005;
+    const weightRate = 0.01;
+    const distanceRate = 0.02;
 
     this.price =
       baseRate * sizeVolume +

@@ -36,7 +36,9 @@ function updateStep() {
     delivery = createDelivery();
     if (delivery) {
       const price = delivery.calculatePrice().toFixed(2);
-      document.getElementById("price-result").textContent = `${price}$`;
+      document.getElementById(
+        "price-result"
+      ).textContent = `Cost of Delivery: ${price}$`;
     }
   }
 
@@ -86,8 +88,9 @@ function displayConfirmation() {
     document.getElementById(
       "parcel-weight"
     ).textContent = `${delivery.parcel.weight} kg`;
-    document.getElementById("delivery-code").textContent =
-      delivery.deliveryCode;
+    document.getElementById(
+      "delivery-code"
+    ).textContent = `${delivery.deliveryCode}`;
     document.getElementById("parcel-code").textContent = delivery.parcelCode;
     document.getElementById("delivery-status").textContent = delivery.status;
     document.getElementById(
@@ -107,9 +110,12 @@ function displayConfirmation() {
 }
 
 distanceBtn.addEventListener("click", () => {
-  if (delivery) {
-    const distance = delivery.calculateDistance().toFixed(3);
-    document.getElementById("distance-result").textContent = `${distance} km`;
+  const delivery_try = createDelivery();
+  if (delivery_try) {
+    const distance = delivery_try.calculateDistance().toFixed(3);
+    document.getElementById(
+      "distance-result"
+    ).textContent = `Distance from sender to receiver: ${distance} km`;
   }
 });
 
@@ -127,14 +133,27 @@ prevBtn.addEventListener("click", () => {
     currentStep--;
     updateStep();
   }
+  const statusResult = document.getElementById("status-result");
+  statusResult.textContent = "";
 });
 
 submitBtn.addEventListener("click", async () => {
+  const statusResult = document.getElementById("status-result");
+  statusResult.textContent = "Adding delivery...";
+
   if (delivery) {
-    await saveDelivery(delivery);
-    console.log("Delivery saved successfully!", delivery);
-    submitBtn.disabled = true;
-    prevBtn.disabled = true;
+    const result = await saveDelivery(delivery);
+    if (result === 1) {
+      statusResult.textContent = "Delivery saved successfully!";
+      console.log("Delivery saved successfully!", delivery);
+      submitBtn.disabled = true;
+      prevBtn.disabled = true;
+    } else {
+      statusResult.textContent = "No connection with server.";
+      console.log("Failed to save delivery.");
+    }
+  } else {
+    statusResult.textContent = "Delivery data is missing.";
   }
 });
 
