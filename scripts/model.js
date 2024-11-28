@@ -59,19 +59,19 @@ export class Delivery {
     return this.price;
   }
 
-  updateStatus(newStatus) {
-    const validStatuses = ["Pending", "In Transit", "Delivered", "Cancelled"];
-    if (!validStatuses.includes(newStatus)) {
-      throw new Error(
-        `Invalid status: ${newStatus}. Valid statuses are: ${validStatuses.join(
-          ", "
-        )}`
-      );
-    }
+  // updateStatus(newStatus) {
+  //   const validStatuses = ["Pending", "In Transit", "Delivered", "Cancelled"];
+  //   if (!validStatuses.includes(newStatus)) {
+  //     throw new Error(
+  //       `Invalid status: ${newStatus}. Valid statuses are: ${validStatuses.join(
+  //         ", "
+  //       )}`
+  //     );
+  //   }
 
-    this.status = newStatus;
-    console.log(
-      `Delivery ${this.deliveryCode} status updated to: ${this.status}`
-    );
-  }
+  //   this.status = newStatus;
+  //   console.log(
+  //     `Delivery ${this.deliveryCode} status updated to: ${this.status}`
+  //   );
+  // }
 }
