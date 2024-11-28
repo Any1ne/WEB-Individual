@@ -33,8 +33,13 @@ function authenticateAPIKey(req, res, next) {
   }
 }
 
-const deliveryStatuses = ["Pending", "In Progress", "Dispatched", "Delivered"];
-const statusDurations = [5000, 30000, 30000];
+const deliveryStatuses = [
+  "Pending",
+  "Casting teleport",
+  "Dispatched",
+  "Delivered",
+];
+const statusDurations = [5000, 25000, 30000];
 
 app.post("/add-delivery", async (req, res) => {
   const delivery = req.body;
