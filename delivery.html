@@ -124,12 +124,14 @@
                     <div>
                       <input
                         id="sender-latitude"
+                        class="coordinates"
                         type="text"
                         placeholder="Latitude"
                         data-validate="isValidLatitude"
                       />
                       <input
                         id="sender-longtitude"
+                        class="coordinates"
                         type="text"
                         placeholder="Longtitude"
                         data-validate="isValidLongitude"
@@ -176,8 +178,8 @@
                     />
                   </label>
                 <div id="map"></div> -->
-                <div class = "results">  <p id="distance-result"></p> </div>
-                <div class = "buttons_distance">
+                <div class="results"><p id="distance-result"></p></div>
+                <div class="buttons_distance">
                   <a
                     class="link_map"
                     href="https://www.google.com.ua/maps/"
@@ -187,7 +189,6 @@
                   </a>
                   <button id="calculate-distance">Calculate Distance</button>
                 </div>
-               
               </div>
 
               <div class="step-content" data-step="3">
@@ -228,7 +229,7 @@
                     </div>
                   </label>
                 </div>
-                <div class = "resilts">
+                <div class="resilts">
                   <!-- <button id="calculate-cost">Calculate Cost</button> -->
                   <p id="price-result"></p>
                 </div>
@@ -237,7 +238,7 @@
               <div class="step-content" data-step="4">
                 <h2>Checkout</h2>
                 <p>Please confirm the details and submit the form.</p>
-                <div class = "block" id="summary">
+                <div class="block" id="summary">
                   <ul id="delivery-details">
                     <li>
                       <strong>Type:</strong> <span id="parcel-type"></span>

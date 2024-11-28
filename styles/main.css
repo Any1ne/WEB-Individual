@@ -7,7 +7,6 @@ main h1 {
   margin-bottom: 20px;
 }
 
-
 .link_map,
 button {
   text-decoration: none;
@@ -21,7 +20,10 @@ button {
   transition: all 0.3s ease;
 }
 
-.link_map,
+.link_map:hover {
+  background-color: #caa433;
+}
+
 button:hover {
   background-color: #caa433;
 }
@@ -63,19 +65,18 @@ input {
   border-radius: 5px;
 }
 
-.buttons_distance{
+.buttons_distance {
   height: 40px;
   min-height: fit-content;
 }
 
 .link_map,
 button {
-  
   padding: 10px 20px;
   margin: 0 10px;
 }
 
-.results{
+.results {
   margin: 10px;
   height: 20px;
 }
@@ -85,4 +86,8 @@ button {
   border-radius: 8px;
   border: 1px solid #ddd;
   padding: 10px;
+}
+
+.coordinates {
+  width: 100px;
 }
