@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tracking</title>
+    <title>Cost</title>
     <link rel="stylesheet" href="./styles/base.css" />
     <link rel="stylesheet" href="./styles/layout.css" />
     <link rel="stylesheet" href="./styles/header.css" />
@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="./styles/footer.css" />
     <link rel="stylesheet" href="./styles/cost/cost_layout.css" />
     <link rel="stylesheet" href="./styles/cost/cost_main.css" />
-    <link rel="icon" href="data:," />
+    <link rel="icon" href="./styles/assets/calculator-solid.svg" />
   </head>
   <body>
     <div class="container">
@@ -45,7 +45,7 @@
             <div class ="box input-block" id="input-block">
               <h2>Calculate cost</h2>
 
-              <div class = "box">
+              <div class = "">
                 <h2>Parcel Details</h2>
                   <div class="label shipment-type">
                     <label>
@@ -62,9 +62,10 @@
                   <div class="label parcel-size">
                     <label>
                       Parcel Size:
+                      <div>
                       <input
                         type="text"
-                        class="size-input"
+                        class="size_input"
                         id="length"
                         placeholder="Length"
                         data-validate="isPositiveNumber"
@@ -72,7 +73,7 @@
                       x
                       <input
                         type="text"
-                        class="size-input"
+                        class="size_input"
                         id="width"
                         placeholder="Width"
                         data-validate="isPositiveNumber"
@@ -80,31 +81,36 @@
                       x
                       <input
                         type="text"
-                        class="size-input"
+                        class="size_input"
                         id="height"
                         placeholder="Height"
                         data-validate="isPositiveNumber"
                       />
+                    </div>
                     </label>
                   </div>
                   <div class="label parcel-weight">
                     <label>
                       Parcel Weight:
+                      <div>
                       <input
                         type="text"
                         id="weight"
+                        class="size_input"
                         placeholder="Weight"
                         data-validate="isPositiveNumber"
                       />
+                    </div>
                     </label>
                   </div>
               </div>
 
-                <div class = "box">
+                <div class = "">
                 <h2>Addresses</h2>
                 <div class="label sender_coordinates">
                   <label>
                     Sender Coordinates (latitude, longitude):
+                    <div>
                     <input
                       id="sender-latitude"
                       type="text"
@@ -117,11 +123,13 @@
                       placeholder="Longtitude"
                       data-validate="isValidLongitude"
                     />
+                  </div>
                   </label>
                 </div>
                 <div class="label receiver_coordinates">
                   <label>
                     Receiver Coordinates (latitude, longitude):
+                    <div>
                     <input
                     id="receiver-latitude"
                     type="text"
@@ -134,11 +142,12 @@
                     placeholder="Longtitude"
                     data-validate="isValidLongitude"
                   />
+                </div>
                   </label>
                 </div>
               </div>
-              <div class="buttons">
-                <a href="https://www.google.com.ua/maps/" target="_blank">
+              <div class="buttons_cost">
+                <a href="https://www.google.com.ua/maps/" target="_blank" class="link_map">
                   Google Map
                 </a>
                 <button id="calculate_distance">Calculate Distance</button>

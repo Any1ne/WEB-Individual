@@ -9,11 +9,6 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
 .transparent-box {
   background-color: rgba(255, 255, 255, 0.9);
   border-radius: 8px;
@@ -33,49 +28,16 @@ h1 {
   color: #333;
 }
 
+.link_map,
 button {
+  margin:3px;
+  text-decoration: none;
+  font-size: 0.7em;
   border: none;
   border-radius: 5px;
-  background-color: #c5a47e;
+  background-color: #a68111;
   color: #fff;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
 }
-
-button:hover {
-  background-color: #a68564;
-}
-
-button:disabled {
-  background-color: #e0e0e0;
-  cursor: not-allowed;
-}
-
-input {
-  border: 2px solid #c5a47e;
-  border-radius: 5px;
-}
-
-input.error {
-  border: 2px solid red;
-  outline: none;
-}
-
-/* .error {
-    border: 2px solid red;
-  } */
-
-.error_info {
-  margin: 10px;
-  padding: 10px;
-  background-color: #ffe6e6;
-  border: 1px solid red;
-  color: red;
-  font-size: 1rem;
-  display: none;
-}
-
-/* .error_info {
-    display: block;
-  } */

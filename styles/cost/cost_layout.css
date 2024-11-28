@@ -19,38 +19,31 @@
 
 #input-block,
 #output-block {
+  display: flex;
+  flex-direction: column;
   flex: 1;
   margin: 10px;
   margin-bottom: 20px;
   padding: 15px;
+  height: fit-content;
 }
 
 input {
-  width: 30%;
-  height: 20px;
   padding: 10px;
   margin: 5px 10px;
 }
 
-.size-input {
-  width: 30px;
-  height: 20px;
-}
-
-.buttons {
+.buttons_cost {
   display: flex;
+  flex-wrap: wrap;
   margin-top: auto;
   justify-content: space-between;
-  margin-top: 20px;
-  justify-content: end;
   position: relative;
-  bottom: 20px;
-  right: 20px;
 }
 
-button {
+/* button {
   padding: 10px 20px;
   margin: 0 10px;
-}
+} */
 
 /* media() */

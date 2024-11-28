@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="./styles/footer.css" />
     <link rel="stylesheet" href="./styles/delivery/delivery_layout.css" />
     <link rel="stylesheet" href="./styles/delivery/delivery_main.css" />
-    <link rel="icon" href="data:," />
+    <link rel="icon" href="/styles/assets/plus-solid.svg" />
   </head>
   <body>
     <div class="container">
@@ -49,7 +49,7 @@
               <div class="step active" data-step="1">Parcel Details</div>
               <div class="step" data-step="2">Addresses</div>
               <div class="step" data-step="3">Payment Details</div>
-              <div class="step" data-step="4">Verification</div>
+              <div class="step" data-step="4">Checkout</div>
             </div>
 
             <!-- Form Content -->
@@ -176,7 +176,8 @@
                     />
                   </label>
                 <div id="map"></div> -->
-                <div>
+                <div class = "results">  <p id="distance-result"></p> </div>
+                <div class = "buttons_distance">
                   <a
                     class="link_map"
                     href="https://www.google.com.ua/maps/"
@@ -185,8 +186,8 @@
                     Google Map
                   </a>
                   <button id="calculate-distance">Calculate Distance</button>
-                  <p id="distance-result"></p>
                 </div>
+               
               </div>
 
               <div class="step-content" data-step="3">
@@ -227,16 +228,16 @@
                     </div>
                   </label>
                 </div>
-                <div>
+                <div class = "resilts">
                   <!-- <button id="calculate-cost">Calculate Cost</button> -->
                   <p id="price-result"></p>
                 </div>
               </div>
 
               <div class="step-content" data-step="4">
-                <h2>Verification</h2>
+                <h2>Checkout</h2>
                 <p>Please confirm the details and submit the form.</p>
-                <div id="summary">
+                <div class = "block" id="summary">
                   <ul id="delivery-details">
                     <li>
                       <strong>Type:</strong> <span id="parcel-type"></span>

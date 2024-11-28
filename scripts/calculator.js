@@ -1,5 +1,5 @@
 import { Validator } from "./validation.js";
-import { showError, clearError, createDelivery } from "./server/script.js";
+import { showError, clearError, createDelivery } from "./script.js";
 
 const distanceBtn = document.getElementById("calculate_distance");
 const costBtn = document.getElementById("calculate_cost");
@@ -35,7 +35,7 @@ distanceBtn.addEventListener("click", () => {
     const delivery = createDelivery();
     if (delivery) {
       const distance = delivery.calculateDistance().toFixed(3);
-      document.getElementById("distance-result").textContent = `${distance} km`;
+      document.getElementById("distance-result").textContent = `Distance from sender to receiver: ${distance} km`;
     }
   }
 });
@@ -45,7 +45,7 @@ costBtn.addEventListener("click", () => {
     const delivery = createDelivery();
     if (delivery) {
       const price = delivery.calculatePrice().toFixed(2);
-      document.getElementById("price-result").textContent = `${price}$`;
+      document.getElementById("price-result").textContent = `Cost of Delivery: ${price}$`;
     }
   }
 });
